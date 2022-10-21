@@ -2,14 +2,16 @@
 //
 
 #include <iostream>
+#include "Controller.h"
 
 using namespace std;
-void start() {};
+
 void load() {};
 
 int main() {
 
 	int command;
+	Controller ctrl;
 
 	cout << "--------Prey - predator model--------" << endl
 		<< "Pres '1' to start symulation" << endl
@@ -22,7 +24,7 @@ int main() {
 		switch (command)
 		{
 		case 1: {
-			start();
+			ctrl.start();
 		}
 		case 2: {
 			load();

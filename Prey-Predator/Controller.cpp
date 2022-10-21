@@ -4,7 +4,7 @@ using namespace std;
 
 void Controller::start() {
 
-    Map gameMap = Controller::getMap();
+    Map gameMap;
 
     do    // Введення розмірів карти для симуляції
     {
@@ -31,33 +31,33 @@ void Controller::start() {
     cin >> ;*/
 
 
-    vector<Rabbit> vecRabbit;   //Створення вектора зайців
+    //vector<Rabbit> vecRabbit;   //Створення вектора зайців
 
-    unsigned int xR = rand() % gameMap.length + 1;
-    unsigned int yR = rand() % gameMap.width + 1;
+    //unsigned int xR = rand() % gameMap.length + 1;
+    //unsigned int yR = rand() % gameMap.width + 1;
 
-    Rabbit firstRabbit(xR, yR); // Конструктор зайця
+    //Rabbit firstRabbit(xR, yR); // Конструктор зайця
 
-    vecRabbit.push_back(firstRabbit);
+    //vecRabbit.push_back(firstRabbit);
 
-    vector<Wolf> vecWolf; // Сворення вектора вовків
+    //vector<Wolf> vecWolf; // Сворення вектора вовків
 
-    unsigned int xW = rand() % gameMap.length + 1;
-    unsigned int yW = rand() % gameMap.width + 1;
+    //unsigned int xW = rand() % gameMap.length + 1;
+    //unsigned int yW = rand() % gameMap.width + 1;
 
-    while ((xR == xW) && (yR == yW))
-    {
-        xW = rand() % gameMap.length + 1;
-        yW = rand() % gameMap.width + 1;
-    }
+    //while ((xR == xW) && (yR == yW))
+    //{
+    //    xW = rand() % gameMap.length + 1;
+    //    yW = rand() % gameMap.width + 1;
+    //}
 
-    Wolf firstWolf(xW, yW); // Конструктор зайця
+    //Wolf firstWolf(xW, yW); // Конструктор зайця
 
-    vecWolf.push_back(firstWolf);
+    //vecWolf.push_back(firstWolf);
 
-    Controller::setVecRabbit(vecRabbit);
-    Controller::setVecRabbit(vecWolf);
-    Controller::setMap(gameMap);
+    //Controller::setVecRabbit(vecRabbit);
+    //Controller::setVecRabbit(vecWolf);
+    //Controller::setMap(gameMap);
 }
 
 void Controller::refresh() {
