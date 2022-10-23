@@ -13,7 +13,7 @@ class Animal {
 private:
     bool alive;
     Coordinates position;
-    static num_of_animals;
+    static int num_of_animals;
 public:
     Animal();
     Animal(int x, int y);

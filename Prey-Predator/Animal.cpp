@@ -4,6 +4,8 @@
 
 #include "Animal.h"
 #include <cmath>
+#include <cstdlib>
+#include <ctime>
 Animal::Animal()
 {
     position.x = 0;
