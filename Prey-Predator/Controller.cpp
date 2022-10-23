@@ -3,14 +3,15 @@
 using namespace std;
 
 
-Tiger Controller::getTigerArray()
+Controller::Controller(int x, int y)
 {
-	return *tigerArray;
+	Map map(x, y);
+	setMap(map);
 }
 
-Deer Controller::getDeerArray()
+Animal* Controller::getAnimalsArray()
 {
-	return *deerArray;
+	return animalArray;
 }
 
 Map Controller::getMap()
@@ -18,14 +19,9 @@ Map Controller::getMap()
 	return gameMap;
 }
 
-void Controller::setDeerArray(Deer* newDeerArray)
+void Controller::setAnimalsArray(Animal* newAnimalArray)
 {
-	deerArray = newDeerArray;
-}
-
-void Controller::setTigerArray(Tiger* newTigerArray)
-{
-	tigerArray = newTigerArray;
+	animalArray = newAnimalArray;
 }
 
 void Controller::setMap(Map newMap)
@@ -34,13 +30,17 @@ void Controller::setMap(Map newMap)
 }
 
 
-void Controller::start() {
-
-   
-
+void Controller::start() 
+{
+	int xAnim = rand() % gameMap.getSize().x + 1;
+	int yAnim = rand() % gameMap.getSize().y + 1;
+	Animal anim(xAnim, yAnim);
+	getAnimalsArray()[lastInsertedIndex] = anim;
+	lastInsertedIndex++;
 }
 
-void Controller::refresh() {
+void Controller::refresh() 
+{
 
 
 }

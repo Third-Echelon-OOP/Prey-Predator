@@ -55,6 +55,10 @@ Map::Map(int x, int y) {
     size.y = y;
 }
 
+Map::getSize() {
+    return size;
+}
+
 Map::generateObject1() {
     MapObject(1, 4, &size);
 }
