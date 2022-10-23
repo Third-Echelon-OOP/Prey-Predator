@@ -26,12 +26,12 @@ public:
 
 class Map {
 private:
-    int numberOfObjects;
     Coordinates size;
-    MapObject object[numberOfObjects];
+    MapObject object[100];
 public:
     Map();
     Map(int x, int y);
+    Coordinates getSize();
     void generateObject1();
 };
 

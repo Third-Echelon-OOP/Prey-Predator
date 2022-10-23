@@ -1,34 +1,34 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 #include <vector>
+#include "Animal.h"
+#include "Map.h"
+
+#define SPEED = 1;
+
 using namespace std;
+
 
 class Controller {
 
 private:
-	vector<Rabbit> vecRabbit;		// Приватні змінні для масивів вовків та зайців, мапи 
-	vector<Wolf> vecWolf;
 	Map gameMap;
-	// Також треба продумати від яких коефіцієнтів буде залежати симуляція
-	// голод, старість і т.д
-	// Скласти відповідні рівняння
 
+	// change to vector in Lab2
+	int lastInsertedIndex = 0;
+	Animal *animalArray = new Animal[100];
 
 public:
 
-	void setVecRabbit(vector<Rabbit> vecRabbit); // Сетери для приватних змінних
-	void setVecWolf(vector<Wolf> vecWolf);
-	void setMap(Map gameMap);
-
-	vector<Rabbit> getVecRabbit(); // Гетери для приватних змінних
-	vector<Wolf> getVecWolf();
+	Controller(int x, int y);
+	void setMap(Map newMap);
+	void setAnimalsArray(Animal *newAnimalArray);
+	Animal* getAnimalsArray();
 	Map getMap();
 
-	void start();	//Старт симуляції, введення початкових параметрів
-
-	void refresh(); //Оновлення карти після кожного ходу
-
-	void insertToFile(); //Функції для запису та зчитування даних з файлу
+	void start();	
+	void refresh(); 
+	void insertToFile(); 
 	void getFromFile();
 };
 
