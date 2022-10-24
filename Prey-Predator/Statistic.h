@@ -1,5 +1,5 @@
 #ifndef STATISTIC_H
-#include STATISTIC_H
+#define STATISTIC_H
 
 
 #endif // !STATISTIC_H

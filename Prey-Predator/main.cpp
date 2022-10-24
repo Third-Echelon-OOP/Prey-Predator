@@ -11,8 +11,6 @@ void load() {};
 int main() {
 
 	int command;
-	Controller ctrl;
-
 	cout << "--------Prey - predator model--------" << endl
 		<< "Pres '1' to start symulation" << endl
 		<< "Pres '2' to load existing symulation" << endl
@@ -27,10 +25,10 @@ int main() {
 			int x, y;
 			do
 			{
-				cout << "Enter length of field: ";
+				cout << "Enter length of map: ";
 				cin >> y;
 				
-				cout << "Enter width of field: ";
+				cout << "Enter width of map: ";
 				cin >> x;
 				
 				if ((x < 10) && (y < 10))
@@ -40,6 +38,34 @@ int main() {
 			} while ((x < 10) && (y < 10));
 			Controller control(x, y);
 			control.start();
+			cout << "L: " << control.getMap().getSize().getY() << " W:" << control.getMap().getSize().getX() << endl;
+			cout << "First animal coordinates: " << control.getAnimalsArray()[0].get_x() << ", "
+				<< control.getAnimalsArray()[0].get_y() << endl;
+
+			int commandRefresh;
+			do
+			{
+				cout << "If you want make new simulation step enter '0' / to exit enter '3'" << endl;
+				cin >> commandRefresh;
+				switch (commandRefresh)
+				{
+				case 0:
+				{
+					control.refresh();
+					cout << "First animal coordinates: " << control.getAnimalsArray()[0].get_x() << ", "
+						<< control.getAnimalsArray()[0].get_y() << endl;
+				}
+				case 3:
+				{
+					break;
+				}
+				default:
+					cout << "No such command. Try one more time" << endl;
+					cin.clear();
+					cin.sync();
+					break;
+				}
+			} while (commandRefresh != 3);
 
 		}
 		case 2: {

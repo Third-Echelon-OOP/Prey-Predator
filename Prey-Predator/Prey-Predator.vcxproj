@@ -139,11 +139,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Animal.cpp" />
     <ClCompile Include="Controller.cpp" />
+    <ClCompile Include="Coordinates.cpp" />
+    <ClCompile Include="Deer.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Statistic.cpp" />
+    <ClCompile Include="Tiger.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Animal.h" />
     <ClInclude Include="Controller.h" />
+    <ClInclude Include="Coordinates.h" />
+    <ClInclude Include="Deer.h" />
+    <ClInclude Include="Interphase_movement.h" />
+    <ClInclude Include="Map.h" />
+    <ClInclude Include="Statistic.h" />
+    <ClInclude Include="Tiger.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

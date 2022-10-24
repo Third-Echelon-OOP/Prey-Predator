@@ -32,15 +32,21 @@ void Controller::setMap(Map newMap)
 
 void Controller::start() 
 {
-	int xAnim = rand() % gameMap.getSize().x + 1;
-	int yAnim = rand() % gameMap.getSize().y + 1;
+	int xAnim = rand() % gameMap.getSize().getX() + 1;
+	int yAnim = rand() % gameMap.getSize().getY() + 1;
 	Animal anim(xAnim, yAnim);
 	getAnimalsArray()[lastInsertedIndex] = anim;
 	lastInsertedIndex++;
 }
 
-void Controller::refresh() 
+void Controller::refresh() // change to (refresh map in every simulation step and work with every animal) in Lab2
 {
-
+	for (int i = 0; i <= lastInsertedIndex; i++)
+	{
+		if (animalArray[i].get_alive() == true)
+		{
+			animalArray[i].wandering();
+		}
+	}
 
 }

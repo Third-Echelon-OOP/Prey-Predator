@@ -3,16 +3,11 @@
 //
 
 #include "Map.h"
+#include <algorithm>
+#include <cstdlib>
+#include <ctime>
 
-Coordinates::Coordinates() {
-    x = 0;
-    y = 0;
-}
 
-Coordinates::Coordinates(int x, int y) {
-    this->x = x;
-    this->y = y;
-}
 
 Coordinates::Coordinates operator +(Coordinates const &arg) {
     Coordinates res;
@@ -38,14 +33,16 @@ MapObject::MapObject(int type, int points, Coordinates *mapSize) {
     objectType = type;
     //numberOfPoints = points;
     numberOfPoints = 4;
-    pointArr = new Coordinates [points];
+    pointArr = new Coordinates[points];
     pointsGenerator(mapSize);
 }
 
 void MapObject::pointsGenerator(Coordinates *mapSize) {
     int indent = 5;
-    Coordinates central(indent + rand() % (mapSize->x - indent),
-                        indent + rand() % (mapSize->y - indent));
+    Coordinates central(indent + rand() % (mapSize->getX() - indent),
+                        indent + rand() % (mapSize->getY() - indent));
+
+
 
     pointArr[0] = Coordinates(0, 2);
     pointArr[1] = Coordinates(2, 0);
@@ -53,39 +50,44 @@ void MapObject::pointsGenerator(Coordinates *mapSize) {
     pointArr[3] = Coordinates(-2, 0);
 
     for (int i = 0; i < numberOfPoints; i++) {
-        pointArr[i] += central;
+        int newX = pointArr[i].getX(), newY = pointArr[i].getY();
+        newX += central.getX();
+        newY += central.getY();
+        pointArr[i].setX(newX);
+        pointArr[i].setY(newY);
     }
 }
 
-MapObject::~MapObject() {
-    delete pointArr;
-}
+//MapObject::~MapObject() {
+//    delete pointArr;
+//}
 
 Map::Map() {
-    size.x = 0;
-    size.y = 0;
     numberOfObjects = 0;
 }
 
 Map::Map(int x, int y) {
-    size.x = x;
-    size.y = y;
+    size = Coordinates(x, y);
     numberOfObjects = 100;
-    object = new [numberOfObjects];
+    object = new MapObject[numberOfObjects];
+
     currNum = 0;
 }
 
-Map::getSize() {
+Coordinates Map::getSize() {
     return size;
 }
 
-Map::generateObject1() {
+
+void Map::generateObject1() {
     object[currNum] = MapObject(1, 4, &size);
     currNum++;
     if (currNum >= numberOfObjects)
         currNum = 0;
 }
 
-Map::~Map() {
-    delete object;
-}
+
+//Map::~Map() {
+//    delete object;
+//}
+
