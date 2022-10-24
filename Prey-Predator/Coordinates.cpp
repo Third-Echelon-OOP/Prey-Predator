@@ -41,5 +41,5 @@ void Coordinates::setX(int newX)
 
 void Coordinates::setY(int newY)
 {
-    x = newY;
+    y = newY;
 }
