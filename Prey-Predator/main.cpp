@@ -2,14 +2,16 @@
 //
 
 #include <iostream>
+#include "Controller.h"
 
 using namespace std;
-void start() {};
+
 void load() {};
 
 int main() {
 
 	int command;
+	Controller ctrl;
 
 	cout << "--------Prey - predator model--------" << endl
 		<< "Pres '1' to start symulation" << endl
@@ -22,7 +24,23 @@ int main() {
 		switch (command)
 		{
 		case 1: {
-			start();
+			int x, y;
+			do
+			{
+				cout << "Enter length of field: ";
+				cin >> y;
+				
+				cout << "Enter width of field: ";
+				cin >> x;
+				
+				if ((x < 10) && (y < 10))
+				{
+					cout << "Too small field to set 2 animals. Try again." << endl;
+				}
+			} while ((x < 10) && (y < 10));
+			Controller control(x, y);
+			control.start();
+
 		}
 		case 2: {
 			load();

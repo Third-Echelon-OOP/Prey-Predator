@@ -70,9 +70,13 @@ Map::Map() {
 Map::Map(int x, int y) {
     size.x = x;
     size.y = y;
-    numberOfObjects = 10;
+    numberOfObjects = 100;
     object = new [numberOfObjects];
     currNum = 0;
+}
+
+Map::getSize() {
+    return size;
 }
 
 Map::generateObject1() {
@@ -80,4 +84,8 @@ Map::generateObject1() {
     currNum++;
     if (currNum >= numberOfObjects)
         currNum = 0;
+}
+
+Map::~Map() {
+    delete object;
 }

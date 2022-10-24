@@ -32,10 +32,13 @@ private:
     Coordinates size;
     MapObject *object;
     int currNum;
+
 public:
     Map();
     Map(int x, int y);
+    Coordinates getSize();
     void generateObject1();
+    ~Map();
 };
 
 #endif //PREY_PREDATOR_MAP_H
