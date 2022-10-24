@@ -10,6 +10,8 @@ struct Coordinates {
     int y;
     Coordinates();
     Coordinates(int x, int y);
+    Coordinates operator +(Coordinates const &arg);
+    Coordinates operator -(Coordinates const &arg);
 };
 
 class MapObject {
@@ -26,13 +28,17 @@ public:
 
 class Map {
 private:
+    int numberOfObjects;
     Coordinates size;
-    MapObject object[100];
+    MapObject *object;
+    int currNum;
+
 public:
     Map();
     Map(int x, int y);
     Coordinates getSize();
     void generateObject1();
+    ~Map();
 };
 
 #endif //PREY_PREDATOR_MAP_H
