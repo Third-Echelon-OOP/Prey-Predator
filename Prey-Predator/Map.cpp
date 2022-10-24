@@ -9,20 +9,6 @@
 
 
 
-Coordinates::Coordinates operator +(Coordinates const &arg) {
-    Coordinates res;
-    res.x = x + arg.x;
-    res.y = y + arg.y;
-    return res;
-}
-
-Coordinates::Coordinates operator -(Coordinates const &arg) {
-    Coordinates res;
-    res.x = x - arg.x;
-    res.y = y - arg.y;
-    return res;
-}
-
 MapObject::MapObject() {
     objectType = -1;
     numberOfPoints = 0;
