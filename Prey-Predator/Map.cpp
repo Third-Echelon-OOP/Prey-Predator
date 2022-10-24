@@ -14,6 +14,20 @@ Coordinates::Coordinates(int x, int y) {
     this->y = y;
 }
 
+Coordinates::Coordinates operator +(Coordinates const &arg) {
+    Coordinates res;
+    res.x = x + arg.x;
+    res.y = y + arg.y;
+    return res;
+}
+
+Coordinates::Coordinates operator -(Coordinates const &arg) {
+    Coordinates res;
+    res.x = x - arg.x;
+    res.y = y - arg.y;
+    return res;
+}
+
 MapObject::MapObject() {
     objectType = -1;
     numberOfPoints = 0;
@@ -29,12 +43,14 @@ MapObject::MapObject(int type, int points, Coordinates *mapSize) {
 }
 
 void MapObject::pointsGenerator(Coordinates *mapSize) {
-    Coordinates central(rand() % mapSize->x, rand() % mapSize->y);
+    int indent = 5;
+    Coordinates central(indent + rand() % (mapSize->x - indent),
+                        indent + rand() % (mapSize->y - indent));
 
-    pointArr[0] = Coordinates(2, 2);
-    pointArr[1] = Coordinates(2, -2);
-    pointArr[2] = Coordinates(-2, -2);
-    pointArr[3] = Coordinates(-2, 2);
+    pointArr[0] = Coordinates(0, 2);
+    pointArr[1] = Coordinates(2, 0);
+    pointArr[2] = Coordinates(0, -2);
+    pointArr[3] = Coordinates(-2, 0);
 
     for (int i = 0; i < numberOfPoints; i++) {
         pointArr[i] += central;
@@ -48,13 +64,20 @@ MapObject::~MapObject() {
 Map::Map() {
     size.x = 0;
     size.y = 0;
+    numberOfObjects = 0;
 }
 
 Map::Map(int x, int y) {
     size.x = x;
     size.y = y;
+    numberOfObjects = 10;
+    object = new [numberOfObjects];
+    currNum = 0;
 }
 
 Map::generateObject1() {
-    MapObject(1, 4, &size);
+    object[currNum] = MapObject(1, 4, &size);
+    currNum++;
+    if (currNum >= numberOfObjects)
+        currNum = 0;
 }

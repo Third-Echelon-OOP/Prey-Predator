@@ -10,6 +10,8 @@ struct Coordinates {
     int y;
     Coordinates();
     Coordinates(int x, int y);
+    Coordinates operator +(Coordinates const &arg);
+    Coordinates operator -(Coordinates const &arg);
 };
 
 class MapObject {
@@ -28,7 +30,8 @@ class Map {
 private:
     int numberOfObjects;
     Coordinates size;
-    MapObject object[numberOfObjects];
+    MapObject *object;
+    int currNum;
 public:
     Map();
     Map(int x, int y);
