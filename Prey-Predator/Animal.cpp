@@ -3,9 +3,12 @@
 //
 
 #include "Animal.h"
-#include <cmath>
+#include <algorithm>
 #include <cstdlib>
 #include <ctime>
+
+using namespace std;
+
 Animal::Animal()
 {
     position.x = 0;

@@ -3,13 +3,16 @@
 //
 
 #include "Map.h"
+#include <algorithm>
+#include <cstdlib>
+#include <ctime>
 
-Coordinates::Coordinates() {
+MapCoordinates::MapCoordinates() {
     x = 0;
     y = 0;
 }
 
-Coordinates::Coordinates(int x, int y) {
+MapCoordinates::MapCoordinates(int x, int y) {
     this->x = x;
     this->y = y;
 }
@@ -20,24 +23,25 @@ MapObject::MapObject() {
     pointArr = nullptr;
 }
 
-MapObject::MapObject(int type, int points, Coordinates *mapSize) {
+MapObject::MapObject(int type, int points, MapCoordinates *mapSize) {
     objectType = type;
     //numberOfPoints = points;
     numberOfPoints = 4;
-    pointArr = new Coordinates [points];
+    pointArr = new MapCoordinates [points];
     pointsGenerator(mapSize);
 }
 
-void MapObject::pointsGenerator(Coordinates *mapSize) {
-    Coordinates central(rand() % mapSize->x, rand() % mapSize->y);
+void MapObject::pointsGenerator(MapCoordinates *mapSize) {
+    MapCoordinates central(rand() % mapSize->x, rand() % mapSize->y);
 
-    pointArr[0] = Coordinates(2, 2);
-    pointArr[1] = Coordinates(2, -2);
-    pointArr[2] = Coordinates(-2, -2);
-    pointArr[3] = Coordinates(-2, 2);
+    pointArr[0] = MapCoordinates(2, 2);
+    pointArr[1] = MapCoordinates(2, -2);
+    pointArr[2] = MapCoordinates(-2, -2);
+    pointArr[3] = MapCoordinates(-2, 2);
 
     for (int i = 0; i < numberOfPoints; i++) {
-        pointArr[i] += central;
+        pointArr[i].x += central.x;
+        pointArr[i].y += central.y;
     }
 }
 
@@ -55,10 +59,10 @@ Map::Map(int x, int y) {
     size.y = y;
 }
 
-Map::getSize() {
+MapCoordinates Map::getSize() {
     return size;
 }
 
-Map::generateObject1() {
+void Map::generateObject1() {
     MapObject(1, 4, &size);
 }

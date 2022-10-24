@@ -39,8 +39,14 @@ void Controller::start()
 	lastInsertedIndex++;
 }
 
-void Controller::refresh() 
+void Controller::refresh() // change to (refresh map in every simulation step and work with every animal) in Lab2
 {
-
+	for (int i = 0; i <= lastInsertedIndex; i++)
+	{
+		if (animalArray[i].get_alive() == true)
+		{
+			animalArray[i].wandering();
+		}
+	}
 
 }

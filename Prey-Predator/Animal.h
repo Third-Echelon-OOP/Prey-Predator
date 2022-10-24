@@ -13,11 +13,10 @@ class Animal {
 private:
     bool alive;
     Coordinates position;
-    static int num_of_animals;
+    int num_of_animals;
 public:
     Animal();
     Animal(int x, int y);
-    virtual ~Animal();
     void set_x(int x);
     void set_y(int y);
     void live();

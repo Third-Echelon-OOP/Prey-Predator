@@ -25,7 +25,6 @@ public:
 	void setAnimalsArray(Animal *newAnimalArray);
 	Animal* getAnimalsArray();
 	Map getMap();
-
 	void start();	
 	void refresh(); 
 	void insertToFile(); 
