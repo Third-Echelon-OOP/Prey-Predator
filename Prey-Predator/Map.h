@@ -5,7 +5,9 @@
 #ifndef PREY_PREDATOR_MAP_H
 #define PREY_PREDATOR_MAP_H
 
+
 #include "Coordinates.h"
+
 
 class MapObject {
 private:
@@ -31,7 +33,9 @@ public:
     Map(int x, int y);
     Coordinates getSize();
     void generateObject1();
+
     //~Map();
+
 };
 
 #endif //PREY_PREDATOR_MAP_H

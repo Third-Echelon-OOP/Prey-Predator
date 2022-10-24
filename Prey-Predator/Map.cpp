@@ -9,6 +9,20 @@
 
 
 
+Coordinates::Coordinates operator +(Coordinates const &arg) {
+    Coordinates res;
+    res.x = x + arg.x;
+    res.y = y + arg.y;
+    return res;
+}
+
+Coordinates::Coordinates operator -(Coordinates const &arg) {
+    Coordinates res;
+    res.x = x - arg.x;
+    res.y = y - arg.y;
+    return res;
+}
+
 MapObject::MapObject() {
     objectType = -1;
     numberOfPoints = 0;
@@ -27,6 +41,8 @@ void MapObject::pointsGenerator(Coordinates *mapSize) {
     int indent = 5;
     Coordinates central(indent + rand() % (mapSize->getX() - indent),
                         indent + rand() % (mapSize->getY() - indent));
+
+
 
     pointArr[0] = Coordinates(0, 2);
     pointArr[1] = Coordinates(2, 0);
@@ -54,12 +70,14 @@ Map::Map(int x, int y) {
     size = Coordinates(x, y);
     numberOfObjects = 100;
     object = new MapObject[numberOfObjects];
+
     currNum = 0;
 }
 
 Coordinates Map::getSize() {
     return size;
 }
+
 
 void Map::generateObject1() {
     object[currNum] = MapObject(1, 4, &size);
@@ -68,6 +86,8 @@ void Map::generateObject1() {
         currNum = 0;
 }
 
+
 //Map::~Map() {
 //    delete object;
 //}
+
