@@ -7,15 +7,7 @@
 #include <cstdlib>
 #include <ctime>
 
-MapCoordinates::MapCoordinates() {
-    x = 0;
-    y = 0;
-}
 
-MapCoordinates::MapCoordinates(int x, int y) {
-    this->x = x;
-    this->y = y;
-}
 
 MapObject::MapObject() {
     objectType = -1;
@@ -23,46 +15,59 @@ MapObject::MapObject() {
     pointArr = nullptr;
 }
 
-MapObject::MapObject(int type, int points, MapCoordinates *mapSize) {
+MapObject::MapObject(int type, int points, Coordinates *mapSize) {
     objectType = type;
     //numberOfPoints = points;
     numberOfPoints = 4;
-    pointArr = new MapCoordinates [points];
+    pointArr = new Coordinates[points];
     pointsGenerator(mapSize);
 }
 
-void MapObject::pointsGenerator(MapCoordinates *mapSize) {
-    MapCoordinates central(rand() % mapSize->x, rand() % mapSize->y);
+void MapObject::pointsGenerator(Coordinates *mapSize) {
+    int indent = 5;
+    Coordinates central(indent + rand() % (mapSize->getX() - indent),
+                        indent + rand() % (mapSize->getY() - indent));
 
-    pointArr[0] = MapCoordinates(2, 2);
-    pointArr[1] = MapCoordinates(2, -2);
-    pointArr[2] = MapCoordinates(-2, -2);
-    pointArr[3] = MapCoordinates(-2, 2);
+    pointArr[0] = Coordinates(0, 2);
+    pointArr[1] = Coordinates(2, 0);
+    pointArr[2] = Coordinates(0, -2);
+    pointArr[3] = Coordinates(-2, 0);
 
     for (int i = 0; i < numberOfPoints; i++) {
-        pointArr[i].x += central.x;
-        pointArr[i].y += central.y;
+        int newX = pointArr[i].getX(), newY = pointArr[i].getY();
+        newX += central.getX();
+        newY += central.getY();
+        pointArr[i].setX(newX);
+        pointArr[i].setY(newY);
     }
 }
 
-MapObject::~MapObject() {
-    delete pointArr;
-}
+//MapObject::~MapObject() {
+//    delete pointArr;
+//}
 
 Map::Map() {
-    size.x = 0;
-    size.y = 0;
+    numberOfObjects = 0;
 }
 
 Map::Map(int x, int y) {
-    size.x = x;
-    size.y = y;
+    size = Coordinates(x, y);
+    numberOfObjects = 100;
+    object = new MapObject[numberOfObjects];
+    currNum = 0;
 }
 
-MapCoordinates Map::getSize() {
+Coordinates Map::getSize() {
     return size;
 }
 
 void Map::generateObject1() {
-    MapObject(1, 4, &size);
+    object[currNum] = MapObject(1, 4, &size);
+    currNum++;
+    if (currNum >= numberOfObjects)
+        currNum = 0;
 }
+
+//Map::~Map() {
+//    delete object;
+//}

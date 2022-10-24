@@ -38,7 +38,7 @@ int main() {
 			} while ((x < 10) && (y < 10));
 			Controller control(x, y);
 			control.start();
-			cout << "L: " << control.getMap().getSize().y << " W:" << control.getMap().getSize().x << endl;
+			cout << "L: " << control.getMap().getSize().getY() << " W:" << control.getMap().getSize().getX() << endl;
 			cout << "First animal coordinates: " << control.getAnimalsArray()[0].get_x() << ", "
 				<< control.getAnimalsArray()[0].get_y() << endl;
 

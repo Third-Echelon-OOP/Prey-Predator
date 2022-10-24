@@ -5,34 +5,33 @@
 #ifndef PREY_PREDATOR_MAP_H
 #define PREY_PREDATOR_MAP_H
 
-struct MapCoordinates {
-    int x;
-    int y;
-    MapCoordinates();
-    MapCoordinates(int x, int y);
-};
+#include "Coordinates.h"
 
 class MapObject {
 private:
     int numberOfPoints;
     int objectType;
-    MapCoordinates*pointArr;
+    Coordinates *pointArr;
 public:
     MapObject();
-    MapObject(int type, int points, MapCoordinates*mapSize);
-    void pointsGenerator(MapCoordinates *mapSize);
-    ~MapObject();
+    MapObject(int type, int points, Coordinates* mapSize);
+    void pointsGenerator(Coordinates*mapSize);
+    //~MapObject();
 };
 
 class Map {
 private:
-    MapCoordinates size;
-    MapObject object[100];
+    int numberOfObjects;
+    Coordinates size;
+    MapObject *object;
+    int currNum;
+
 public:
     Map();
     Map(int x, int y);
-    MapCoordinates getSize();
+    Coordinates getSize();
     void generateObject1();
+    //~Map();
 };
 
 #endif //PREY_PREDATOR_MAP_H

@@ -5,10 +5,8 @@
 #ifndef PREY_PREDATOR_ANIMAL_H
 #define PREY_PREDATOR_ANIMAL_H
 
-struct Coordinates{
-    int x;
-    int y;
-};
+#include "Coordinates.h"
+
 class Animal {
 private:
     bool alive;

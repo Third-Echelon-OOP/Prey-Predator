@@ -32,8 +32,8 @@ void Controller::setMap(Map newMap)
 
 void Controller::start() 
 {
-	int xAnim = rand() % gameMap.getSize().x + 1;
-	int yAnim = rand() % gameMap.getSize().y + 1;
+	int xAnim = rand() % gameMap.getSize().getX() + 1;
+	int yAnim = rand() % gameMap.getSize().getY() + 1;
 	Animal anim(xAnim, yAnim);
 	getAnimalsArray()[lastInsertedIndex] = anim;
 	lastInsertedIndex++;
