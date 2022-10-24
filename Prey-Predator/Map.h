@@ -7,19 +7,8 @@
 
 
 #include "Coordinates.h"
+#include "MapObject.h"
 
-
-class MapObject {
-private:
-    int numberOfPoints;
-    int objectType;
-    Coordinates *pointArr;
-public:
-    MapObject();
-    MapObject(int type, int points, Coordinates* mapSize);
-    void pointsGenerator(Coordinates*mapSize);
-    //~MapObject();
-};
 
 class Map {
 private:

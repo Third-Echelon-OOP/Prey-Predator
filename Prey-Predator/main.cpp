@@ -12,8 +12,8 @@ int main() {
 
 	int command;
 	cout << "--------Prey - predator model--------" << endl
-		<< "Pres '1' to start symulation" << endl
-		<< "Pres '2' to load existing symulation" << endl
+		<< "Pres '1' to start simulation" << endl
+		<< "Pres '2' to load existing simulation" << endl
 		<< "Pres '3' to exit program" << endl;
 
 	while (1) {
