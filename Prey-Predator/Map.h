@@ -23,7 +23,7 @@ public:
     Coordinates getSize();
     void generateObject1();
 
-    ~Map();
+    //~Map();
 
 };
 

@@ -16,7 +16,7 @@ public:
     MapObject();
     MapObject(int type, int points, Coordinates* mapSize);
     void pointsGenerator(Coordinates*mapSize);
-    ~MapObject();
+    //~MapObject();
 };
 
 #endif //PREY_PREDATOR_MAPOBJECT_H
