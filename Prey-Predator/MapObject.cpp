@@ -43,6 +43,18 @@ void MapObject::pointsGenerator(Coordinates *mapSize) {
     }
 }
 
+void MapObject::setType(int objectType) {
+    this->objectType = objectType;
+}
+
+int MapObject::getPointsNum() {
+    return numberOfPoints;
+}
+
+int MapObject::getPointsArr() {
+    return pointArr;
+}
+
 //MapObject::~MapObject() {
 //    delete pointArr;
 //}

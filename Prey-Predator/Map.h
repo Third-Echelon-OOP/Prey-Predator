@@ -20,7 +20,11 @@ private:
 public:
     Map();
     Map(int x, int y);
+
     Coordinates getSize();
+    int getObjectNum();
+    MapObject* getObjectArr();
+
     void generateObject1();
 
     //~Map();
