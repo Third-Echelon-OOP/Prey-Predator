@@ -14,13 +14,14 @@ Animal::Animal()
     position = Coordinates();
     alive = true;
     num_of_animals++;
+    speed = 1;
 }
-Animal::Animal(int x, int y, int speed = 1)
+Animal::Animal(int x, int y, int speed)
 {
     position = Coordinates(x, y);
     alive = true;
     num_of_animals++;
-    this->speed = speed;
+    speed = speed;
 }
 int Animal::get_x()
 {
@@ -65,37 +66,37 @@ void Animal::wandering()
     switch(rand_side)
     {
         case 1:
-            set_x(get_x()+speed);
+            set_x(get_x() + get_speed());
             break;
         case 2:
-            set_x(get_x()-speed);
+            set_x(get_x()- get_speed());
             break;
         case 3:
-            set_y(get_y()+speed);
+            set_y(get_y()+ get_speed());
             break;
         case 4:
-            set_y(get_y()-speed);
+            set_y(get_y()- get_speed());
             break;
     }
 }
 void Animal::move_to(Coordinates& pos)
 {
     int x,y;
-    x = (get_x() - pos.getX())/speed;
-    y = (get_y() - pos.getY())/speed;
+    x = (get_x() - pos.getX())/ get_speed();
+    y = (get_y() - pos.getY())/ get_speed();
     for(int i=0;i<=max(x,y);i++)
     {
-        if(get_x()<pos.getX())set_x(get_x()+speed);
-        else if(get_x()>pos.getX())set_x(get_x()-speed);
-        if(get_y()<pos.getY())set_y(get_y()+speed);
-        else if(get_y()>pos.getY())set_y(get_y()-speed);
+        if(get_x()<pos.getX())set_x(get_x()+ get_speed());
+        else if(get_x()>pos.getX())set_x(get_x()- get_speed());
+        if(get_y()<pos.getY())set_y(get_y()+ get_speed());
+        else if(get_y()>pos.getY())set_y(get_y()- get_speed());
     }
 }
 void Animal::set_speed(int speed)
 {
     this->speed = speed;
 }
-void Animal::get_speed()
+int Animal::get_speed()
 {
     return speed;
 }
