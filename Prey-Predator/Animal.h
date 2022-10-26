@@ -12,9 +12,10 @@ private:
     bool alive;
     Coordinates position;
     int num_of_animals;
+    int speed;
 public:
     Animal();
-    Animal(int x, int y);
+    Animal(int x, int y, int speed = 1);
     void set_x(int x);
     void set_y(int y);
     void live();
