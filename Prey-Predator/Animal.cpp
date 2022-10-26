@@ -20,7 +20,7 @@ Animal::Animal(int x, int y, int speed = 1)
     position = Coordinates(x, y);
     alive = true;
     num_of_animals++;
-    this->speed = speed;
+    speed = speed;
 }
 int Animal::get_x()
 {
@@ -65,7 +65,7 @@ void Animal::wandering()
     switch(rand_side)
     {
         case 1:
-            set_x(get_x()+speed);
+            set_x(get_x() + speed);
             break;
         case 2:
             set_x(get_x()-speed);

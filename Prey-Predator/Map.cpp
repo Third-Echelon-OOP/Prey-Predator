@@ -35,7 +35,7 @@ void Map::generateObject1() {
 }
 
 
-//Map::~Map() {
-//    delete object;
-//}
+Map::~Map() {
+    delete object;
+}
 

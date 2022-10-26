@@ -43,6 +43,6 @@ void MapObject::pointsGenerator(Coordinates *mapSize) {
     }
 }
 
-//MapObject::~MapObject() {
-//    delete pointArr;
-//}
+MapObject::~MapObject() {
+    delete pointArr;
+}
