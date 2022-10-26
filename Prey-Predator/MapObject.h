@@ -15,6 +15,11 @@ private:
 public:
     MapObject();
     MapObject(int type, int points, Coordinates* mapSize);
+
+    void setType(int objectType);
+    int getPointsNum();
+    Coordinates* getPointsArr();
+
     void pointsGenerator(Coordinates*mapSize);
     //~MapObject();
 };
