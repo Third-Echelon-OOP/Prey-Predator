@@ -91,3 +91,11 @@ void Animal::move_to(Coordinates& pos)
         else if(get_y()>pos.getY())set_y(get_y()-speed);
     }
 }
+void Animal::set_speed(int speed)
+{
+    this->speed = speed;
+}
+void Animal::get_speed()
+{
+    return speed;
+}

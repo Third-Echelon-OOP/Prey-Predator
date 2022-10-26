@@ -19,6 +19,8 @@ public:
     void set_x(int x);
     void set_y(int y);
     void live();
+    void get_speed();
+    void set_speed(int speed);
     void death();
     int get_x();
     int get_y();
