@@ -51,7 +51,7 @@ int MapObject::getPointsNum() {
     return numberOfPoints;
 }
 
-int MapObject::getPointsArr() {
+Coordinates* MapObject::getPointsArr() {
     return pointArr;
 }
 
