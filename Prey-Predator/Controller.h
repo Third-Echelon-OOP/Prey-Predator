@@ -2,6 +2,8 @@
 #define CONTROLLER_H
 #include <vector>
 #include "Animal.h"
+#include "Tiger.h"
+#include "Deer.h"
 #include "Map.h"
 
 #define SPEED = 1;
@@ -13,20 +15,20 @@ class Controller {
 
 private:
 	Map gameMap;
-
-	// change to vector in Lab2
-	int lastInsertedIndex = 0;
-	Animal *animalArray = new Animal[100];
-
+	vector<Tiger> TigersArray;
+	vector<Deer> DeersArray;
+	
+	int deerBirthCount;
+	int tigerBirthCount;
 public:
 
 	Controller(int x, int y);
-	void setMap(Map newMap);
-	void setAnimalsArray(Animal *newAnimalArray);
-	Animal* getAnimalsArray();
+	vector<Tiger> getTigersArray();
+	vector<Deer> getDeersArray();
 	Map getMap();
 	void start();	
 	void refresh(); 
+
 	void insertToFile(); 
 	void getFromFile();
 };
