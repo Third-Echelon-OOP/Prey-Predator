@@ -29,7 +29,7 @@ public:
 	void start();	
 	void refresh(); 
 
-	void insertToFile(); 
+	void saveToFile(); 
 	void getFromFile();
 };
 

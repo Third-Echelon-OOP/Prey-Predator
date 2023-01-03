@@ -21,42 +21,42 @@ int main() {
 		cin >> command;
 		switch (command)
 		{
-		case 1: {
-			int x, y;
-			do
-			{
-				cout << "Enter length of map: ";
-				cin >> y;
-				
-				cout << "Enter width of map: ";
-				cin >> x;
-				
-				if ((x < 10) || (y < 10))
+			case 1: {
+				int x, y;
+				do
 				{
-					cout << "Too small field to set 2 animals. Try again." << endl;
-				}
-			} while ((x < 10) || (y < 10));
-			Controller control(x, y);
-			control.start();
-			cout << "L: " << control.getMap().getSize().getY() << " W:" << control.getMap().getSize().getX() << endl;
-			cout << "First Tiger coordinates: " << control.getTigersArray()[0].get_x() << ", "
-				<< control.getTigersArray()[0].get_y() << endl;
-			cout << "First Deer coordinates: " << control.getDeersArray()[0].get_x() << ", "
-				<< control.getDeersArray()[0].get_y() << endl;
-		}
-		case 2: {
-			load();
-		}
-		case 3: {
-			cout << "Close app" << endl;
-			exit(3);
-		}
-		default: {
-			cout << "No such command. Try one more time" << endl;
-			cin.clear();
-			cin.sync();
-			break;
-		}
+					cout << "Enter length of map: ";
+					cin >> y;
+				
+					cout << "Enter width of map: ";
+					cin >> x;
+				
+					if ((x < 10) || (y < 10))
+					{
+						cout << "Too small field to set 2 animals. Try again." << endl;
+					}
+				} while ((x < 10) || (y < 10));
+				Controller control(x, y);
+				control.start();
+				cout << "L: " << control.getMap().getSize().getY() << " W:" << control.getMap().getSize().getX() << endl;
+				cout << "First Tiger coordinates: " << control.getTigersArray()[0].get_x() << ", "
+					<< control.getTigersArray()[0].get_y() << endl;
+				cout << "First Deer coordinates: " << control.getDeersArray()[0].get_x() << ", "
+					<< control.getDeersArray()[0].get_y() << endl;
+			}
+			case 2: {
+				load();
+			}
+			case 3: {
+				cout << "Close app" << endl;
+				exit(3);
+			}
+			default: {
+				cout << "No such command. Try one more time" << endl;
+				cin.clear();
+				cin.sync();
+				break;
+			}
 		}
 	}
 

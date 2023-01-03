@@ -1,5 +1,20 @@
 #include "Statistic.h"
+#include <iostream>
 
-class Statistic {
+using namespace std;
 
-};
+vector<Tiger> Statistic::getPredatorsAmount()
+{
+	return PredatorsAmount;
+}
+
+vector<Deer> Statistic::getPreysAmount()
+{
+	return PreysAmount;
+}
+
+void Statistic::printStatistic()
+{
+
+}
+
