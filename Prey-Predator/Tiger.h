@@ -4,9 +4,24 @@
 
 #ifndef PREY_PREDATOR_TIGER_H
 #define PREY_PREDATOR_TIGER_H
+#include "Animal.h"
 
-
-class Tiger {
+class Tiger:public Animal {
+private:
+    int max_hp;
+    int current_hp;
+public:
+    Tiger():Animal()
+    {
+        max_hp=100;
+        current_hp=max_hp;
+        set_speed(2);
+    }
+    Tiger(int x,int y, int speed=2):Animal(x, y, speed)
+    {
+        max_hp=100;
+        current_hp=max_hp;
+    }
 
 };
 
