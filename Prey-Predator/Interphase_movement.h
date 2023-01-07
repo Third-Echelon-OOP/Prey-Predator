@@ -1,6 +1,7 @@
 //
 // Created by PC1 on 23.10.2022.
 //
+#include "Coordinates.h" 
 
 #ifndef PREY_PREDATOR_INTERPHASE_MOVEMENT_H
 #define PREY_PREDATOR_INTERPHASE_MOVEMENT_H

@@ -6,13 +6,13 @@
 #define PREY_PREDATOR_ANIMAL_H
 
 #include "Coordinates.h"
-
-class Animal {
+#include "Interphase_movement.h"
+class Animal:Move {
 private:
     bool alive;
     Coordinates position;
-    int num_of_animals;
-    int speed = 1;
+    static int num_of_animals;
+    int speed;
 public:
     Animal();
     Animal(int x, int y, int speed);
@@ -28,8 +28,8 @@ public:
     bool get_alive();
     int get_num_of_animals();
     double Distance_between_objects(int x, int y);
-    void wandering();
-    void move_to(Coordinates &pos);
+    void wandering()override;
+    void move_to(Coordinates &pos)override;
 };
 
 

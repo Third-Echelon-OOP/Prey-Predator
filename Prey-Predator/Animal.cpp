@@ -62,7 +62,7 @@ double Animal::Distance_between_objects(int x, int y)
 
 void Animal::wandering()
 {
-    int rand_side = rand()%4+1;
+    int rand_side = rand()%8+1;
     switch(rand_side)
     {
         case 1:
@@ -76,6 +76,22 @@ void Animal::wandering()
             break;
         case 4:
             set_y(get_y()- get_speed());
+            break;
+        case 5:
+            set_y(get_y() + speed);
+            set_x(get_x() + speed);
+            break;
+        case 6:
+            set_y(get_y() - speed);
+            set_x(get_x() + speed);
+            break;
+        case 7:
+            set_y(get_y() - speed);
+            set_x(get_x() - speed);
+            break;
+        case 8:
+            set_y(get_y() + speed);
+            set_x(get_x() - speed);
             break;
     }
 }
