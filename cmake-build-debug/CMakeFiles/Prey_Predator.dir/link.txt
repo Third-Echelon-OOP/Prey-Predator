@@ -1,0 +1,3 @@
+"D:\CLion Prog\CLion 2021.2.1\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\Prey_Predator.dir/objects.a
+"D:\CLion Prog\mingw64\bin\ar.exe" cr CMakeFiles\Prey_Predator.dir/objects.a @CMakeFiles\Prey_Predator.dir\objects1.rsp
+"D:\CLion Prog\mingw64\bin\g++.exe" -g -Wl,--whole-archive CMakeFiles\Prey_Predator.dir/objects.a -Wl,--no-whole-archive -o Prey_Predator.exe -Wl,--out-implib,libPrey_Predator.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Prey_Predator.dir\linklibs.rsp

@@ -13,6 +13,7 @@ private:
     Coordinates position;
     static int num_of_animals;
     int speed;
+    int hunger=0;
 public:
     Animal();
     Animal(int x, int y, int speed);
@@ -30,6 +31,10 @@ public:
     double Distance_between_objects(int x, int y);
     void wandering()override;
     void move_to(Coordinates &pos)override;
+    void hunger_reduction();
+    int get_hunger();
+    void set_hunger(int hunger);
+    void go_straight_in_random_side()
 };
 
 

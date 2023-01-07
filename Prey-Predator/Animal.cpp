@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <cstdlib>
 #include <ctime>
+#include <cmath>
 
 using namespace std;
 
@@ -15,6 +16,7 @@ Animal::Animal()
     alive = true;
     num_of_animals++;
     speed = 1;
+    hunger=100;
 }
 Animal::Animal(int x, int y, int speed)
 {
@@ -22,6 +24,7 @@ Animal::Animal(int x, int y, int speed)
     alive = true;
     num_of_animals++;
     speed = speed;
+    hunger=100;
 }
 int Animal::get_x()
 {
@@ -78,20 +81,20 @@ void Animal::wandering()
             set_y(get_y()- get_speed());
             break;
         case 5:
-            set_y(get_y() + speed);
-            set_x(get_x() + speed);
+            set_y(get_y() + get_speed());
+            set_x(get_x() + get_speed());
             break;
         case 6:
-            set_y(get_y() - speed);
-            set_x(get_x() + speed);
+            set_y(get_y() - get_speed());
+            set_x(get_x() + get_speed());
             break;
         case 7:
-            set_y(get_y() - speed);
-            set_x(get_x() - speed);
+            set_y(get_y() - get_speed());
+            set_x(get_x() - get_speed());
             break;
         case 8:
-            set_y(get_y() + speed);
-            set_x(get_x() - speed);
+            set_y(get_y() + get_speed());
+            set_x(get_x() - get_speed());
             break;
     }
 }
@@ -115,4 +118,53 @@ void Animal::set_speed(int speed)
 int Animal::get_speed()
 {
     return speed;
+}
+void Animal::hunger_reduction()
+{
+    hunger-=5;
+}
+int Animal::get_hunger(){
+    return hunger;
+}
+void Animal::set_hunger(int hunger)
+{
+    this->hunger=hunger;
+}
+void Animal::go_straight_in_random_side()
+{
+    int rand_side = rand()%8+1;
+    for(int i=0;i<10;i++)
+    {
+        switch(rand_side)
+        {
+            case 1:
+                set_x(get_x() + get_speed());
+                break;
+            case 2:
+                set_x(get_x()- get_speed());
+                break;
+            case 3:
+                set_y(get_y()+ get_speed());
+                break;
+            case 4:
+                set_y(get_y()- get_speed());
+                break;
+            case 5:
+                set_y(get_y() + get_speed());
+                set_x(get_x() + get_speed());
+                break;
+            case 6:
+                set_y(get_y() - get_speed());
+                set_x(get_x() + get_speed());
+                break;
+            case 7:
+                set_y(get_y() - get_speed());
+                set_x(get_x() - get_speed());
+                break;
+            case 8:
+                set_y(get_y() + get_speed());
+                set_x(get_x() - get_speed());
+                break;
+        }
+    }
 }
