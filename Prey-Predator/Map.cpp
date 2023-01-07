@@ -26,6 +26,14 @@ Coordinates Map::getSize() {
     return size;
 }
 
+int Map::getObjectNum() {
+    return currNum;
+}
+
+MapObject *Map::getObjectArr() {
+    return object;
+}
+
 
 void Map::generateObject1() {
     object[currNum] = MapObject(1, 4, &size);

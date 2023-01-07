@@ -15,7 +15,8 @@ private:
     int speed;
 public:
     Animal();
-    Animal(int x, int y, int speed = 1);
+    Animal(int x, int y, int speed);
+
     void set_x(int x);
     void set_y(int y);
     void live();
