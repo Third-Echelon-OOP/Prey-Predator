@@ -24,8 +24,6 @@ public:
     int get_speed();
     void set_speed(int speed);
     void death();
-    int get_x();
-    int get_y();
     bool get_alive();
     int get_num_of_animals();
     double Distance_between_objects(int x, int y);
@@ -34,7 +32,9 @@ public:
     void hunger_reduction();
     int get_hunger();
     void set_hunger(int hunger);
-    void go_straight_in_random_side()
+    void go_straight_in_random_side();
+    int get_x();
+    int get_y();
 };
 
 
