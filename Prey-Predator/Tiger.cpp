@@ -5,8 +5,8 @@
 
 void Tiger::fierceness()
 {
-    if(get_hunger()<=20) set_speed(3);
-    else if(get_hunger()>20) set_speed(2);
+    if(get_hunger()<=20) set_speed(4);
+    else if(get_hunger()>20) set_speed(3);
 }
 bool Tiger::is_prey_near(std::vector<Deer>& prey)
 {
@@ -35,6 +35,7 @@ void Tiger::hunt(std::vector<Deer>& prey,int need_hunger)
             }
         }
     }
+    else go_straight_in_random_side();
 }
 void Tiger::born_predator(std::vector<Tiger>& predators)
 {

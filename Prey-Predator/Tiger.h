@@ -17,9 +17,9 @@ public:
     {
         max_hp=100;
         current_hp=max_hp;
-        set_speed(2);
+        set_speed(3);
     }
-    Tiger(int x,int y, int speed=2):Animal(x, y, speed)
+    Tiger(int x,int y, int speed=3):Animal(x, y, speed)
     {
         max_hp=100;
         current_hp=max_hp;
@@ -28,7 +28,6 @@ public:
     bool is_prey_near(std::vector<Deer>&prey);
     void hunt(std::vector<Deer>& prey, int need_hunger);
     void born_predator(std::vector<Tiger>& predators);
-
 };
 
 

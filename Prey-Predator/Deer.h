@@ -14,6 +14,7 @@ class Deer:public Animal {
 private:
 	int max_hp;
 	int current_hp;
+    int time_to_birth;
 public:
 	Deer():Animal()
 	{
@@ -21,11 +22,13 @@ public:
 		current_hp = max_hp;
 		set_speed(2);
 	}
-	Deer(int x, int y, int speed = 2) :Animal(x, y, speed) 
+	Deer(int x, int y, int speed = 2,int time_to_birth = 5) :Animal(x, y, speed)
 	{
 		max_hp = 100;
 		current_hp = max_hp;
+        this->time_to_birth = time_to_birth;
 	}
+
     void live_process(TIme_of_year time, std::vector<Grass>&food_objects,std::vector<Deer> &deer_vector);
     int find_food(std::vector<Grass>&food_objects);
     void eat(std::vector<Grass>&food_objects);
