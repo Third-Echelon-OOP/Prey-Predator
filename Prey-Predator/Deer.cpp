@@ -6,15 +6,14 @@
 #include <cmath>
 
 
-void Deer::live_process(TIme_of_year time,std::vector<Grass>&food_objects,std::vector<Deer> &deer_vector)
+void Deer::live_process(TIme_of_year time,std::vector<Grass>&food_objects,std::vector<Deer> &deer_vector)//треба обсудити метод
 {
     hunger_reduction();
     if(get_hunger()<=10)eat(food_objects);
-    if(get_hunger()>=50 && is_another_Deer_near(deer_vector))
+    if(get_hunger()>=50 && is_another_Deer_near(deer_vector) && time.get_season()=="spring")
     {
         go_to_another_deer(deer_vector);
-        Coordinates pos(this->get_x(),this->get_y());
-        give_birth(pos,time,deer_vector);
+        give_birth(time,deer_vector);
     }
 }
 int Deer::find_food(std::vector<Grass>&food_objects)
@@ -70,11 +69,12 @@ bool Deer::is_another_Deer_near(std::vector<Deer> &deer_vector)
     }
     return false;
 }
-void Deer::give_birth(Coordinates pos,TIme_of_year time,std::vector<Deer> &deer_vector)
+void Deer::give_birth(TIme_of_year time,std::vector<Deer> &deer_vector)
 {
     stay_for(5,time);
-    Deer baby(pos.getX(),pos.getY());
+    Deer baby(get_x(),get_y());
     deer_vector.push_back(baby);
+    set_hunger(get_hunger()-30);
 }
 void Deer::go_to_another_deer(std::vector<Deer> &deer_vector)
 {

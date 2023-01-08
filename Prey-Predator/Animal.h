@@ -23,7 +23,7 @@ public:
     void live();
     int get_speed();
     void set_speed(int speed);
-    void death();
+    void death_from_starvation();
     bool get_alive();
     int get_num_of_animals();
     double Distance_between_objects(int x, int y);
@@ -35,6 +35,7 @@ public:
     void go_straight_in_random_side();
     int get_x();
     int get_y();
+    void kill();
 };
 
 

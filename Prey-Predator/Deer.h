@@ -32,7 +32,7 @@ public:
     bool is_food_near(std::vector<Grass>&food_objects);
     bool is_satisfied();
     bool is_another_Deer_near(std::vector<Deer>&deer_vector);
-    void give_birth(Coordinates pos, TIme_of_year time,std::vector<Deer> &deer_vector);
+    void give_birth(TIme_of_year time,std::vector<Deer> &deer_vector);
     void go_to_another_deer(std::vector<Deer>&deer_vector);
     void stay_for(int num_of_days,TIme_of_year time);
     bool is_predator_near(std::vector<Tiger>&tigers);
