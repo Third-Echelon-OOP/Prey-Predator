@@ -6,7 +6,11 @@
 #define PREY_PREDATOR_TIGER_H
 #include "Animal.h"
 #include <vector>
-#include "Deer.h"
+
+
+using namespace std;
+
+class Deer;
 
 class Tiger:public Animal {
 private:
@@ -25,9 +29,8 @@ public:
         current_hp=max_hp;
     }
     void fierceness();
-    bool is_prey_near(std::vector<Deer>&prey);
-    void hunt(std::vector<Deer>& prey, int need_hunger);
-    void born_predator(std::vector<Tiger>& predators);
+    bool is_prey_near(vector<Deer> &prey);
+    void born_predator(vector<Tiger> &predators);
 };
 
 

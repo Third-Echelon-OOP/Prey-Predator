@@ -4,7 +4,7 @@
 
 #ifndef PREY_PREDATOR_TIME_OF_YEAR_H
 #define PREY_PREDATOR_TIME_OF_YEAR_H
-#import <string>
+#include <string>
 
 struct Seasons{
     std::string winter = "winter";
@@ -15,18 +15,18 @@ struct Seasons{
 
 class TIme_of_year {
 private:
-    int day;
+    int days;
     int year;
     Seasons season;
 public:
     TIme_of_year()
     {
-        day = 0;
+        days = 0;
         year = 0;
     }
     TIme_of_year(int day,int year)
     {
-        this->day = day;
+        this->days = day;
         this->year = year;
     }
     void transformation_from_days_to_years();

@@ -7,6 +7,8 @@
 
 #include "Coordinates.h"
 #include "Interphase_movement.h"
+
+
 class Animal:Move {
 private:
     bool alive;
