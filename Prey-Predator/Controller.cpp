@@ -5,16 +5,16 @@ using namespace std;
 
 Controller::Controller(int x, int y)
 {
-	Map map(x, y);
-	setMap(map);
+	getMap().getSize().setX(x);
+	getMap().getSize().setY(y);
 }
 
-vector<Deer> Controller::getDeersArray()
+vector<Deer>& Controller::getDeersArray()
 {
 	return DeersArray;
 }
 
-vector<Tiger> Controller::getTigersArray()
+vector<Tiger>& Controller::getTigersArray()
 {
 	return TigersArray;
 }
@@ -48,44 +48,48 @@ void Controller::start()
 
 void Controller::refresh() 
 {
-
-	// deer born new deer and move to free coordinates, or just move to free coordinates.
 	for (int i = 0; i < DeersArray.size(); i++)
 	{
 		if (DeersArray[i].get_alive() == true)
 		{
-			int newX, newY;   // new coordinates for current deer
-
-			//function to find free coordinates
-
-			if (DeersArray[i].get_birth_count == deerBirthCount)   //Add field birthCount to animal; getter and setter for it 
+			DeersArray[i].hunger_reduction();
+			if (DeersArray[i].get_hunger() <= 10)
 			{
-				Deer childDeer(DeersArray[i].get_x(), DeersArray[i].get_x(), 1);
-				DeersArray.push_back(childDeer);
-
-				DeersArray[i].set_birth_count(0);
-				// move current deer to newX, newY
-				DeersArray[i].move_to({ newX, newY });
+				DeersArray[i].eat();
 			}
-			else
+			if (DeersArray[i].get_hunger() >= 50 && DeersArray[i].is_another_Deer_near(DeersArray) && time.get_season() == "spring")
 			{
-				DeersArray[i].set_birth_count(DeersArray[i].get_birth_count + 1);
-				// move current deer to newX, newY
-				DeersArray[i].move_to({ newX, newY });
+				DeersArray[i].go_to_another_deer(DeersArray);
+				DeersArray[i].give_birth(time, DeersArray);
 			}
 		}
 	}
 
-	// if tiger starves and deer near tiger eats it
-	// else if deer in range of detection tiger go to it
-	// else tiger go to random free coordinates
-
-	// finally if tiger dont starving it born new tiger
+	
 	for (int i = 0; i < TigersArray.size(); i++)
 	{
 		if (TigersArray[i].get_alive() == true)
 		{
-			
+			while (TigersArray[i].get_hunger() < tigersHungerCount)
+			{
+				if (TigersArray[i].is_prey_near(getDeersArray()))
+				{
+					TigersArray[i].fierceness();
+					for (int i = 0; i < getDeersArray().size(); i++)
+					{
+						if (TigersArray[i].Distance_between_objects(getDeersArray()[i].get_x(), getDeersArray()[i].get_y()) <= 100)
+						{
+							Coordinates pos(getDeersArray()[i].get_x(), getDeersArray()[i].get_y());
+							TigersArray[i].move_to(pos);
+							getDeersArray()[i].kill();
+							TigersArray[i].set_hunger(TigersArray[i].get_hunger() + 20);
+							TigersArray[i].fierceness();
+							
+						}
+					}
+				}
+			}
+			TigersArray[i].go_straight_in_random_side();
 		}
 	}
 }
@@ -93,61 +97,10 @@ void Controller::refresh()
 
 void Controller::saveToFile()
 {
-	ofstream out("saveFile.txt");
 
-	if (!out)
-	{
-		cout << "Can't create file" << endl;
-		return;
-	}
-
-	int sizeTigers = TigersArray.size(), sizeDeers = DeersArray.size();
-
-	out << gameMap << sizeDeers << sizeTigers;
-
-	for (int i = 0; i < sizeDeers; i++)
-	{
-		out << DeersArray[i];
-	}
-
-	for (int i = 0; i < sizeTigers; i++)
-	{
-		out << TigersArray[i];
-	}
-
-	return;
 }
 
 void Controller::getFromFile()
 {
-	ifstream in("saveFile.txt");
 
-	if (!in)
-	{
-		cout << "Can't open the file" << endl;
-		return;
-	}
-
-	int sizeDeers, sizeTigers;
-	Tiger tempTiger;
-	Deer tempDeer;
-
-	getDeersArray().clear();
-	getTigersArray().clear();
-
-	in >> gameMap >> sizeDeers >> sizeTigers;
-
-	for (int i = 0; i < sizeDeers; i++)
-	{
-		in >> tempDeer;
-		getDeersArray().push_back(tempDeer);
-	}
-
-	for (int i = 0; i < sizeTigers; i++)
-	{
-		in >> tempTiger;
-		getTigersArray().push_back(tempTiger);
-	}
-	
-	return;
 }

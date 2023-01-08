@@ -4,11 +4,15 @@
 
 #ifndef PREY_PREDATOR_DEER_H
 #define PREY_PREDATOR_DEER_H
+
 #include "Animal.h"
-#include <vector>
 #include "Grass.h"
 #include "TIme_of_year.h"
-#include "Tiger.h"
+#include <vector>
+
+using namespace std;
+
+class Tiger;
 
 class Deer:public Animal {
 private:
@@ -29,16 +33,15 @@ public:
         this->time_to_birth = time_to_birth;
 	}
 
-    void live_process(TIme_of_year time, std::vector<Grass>&food_objects,std::vector<Deer> &deer_vector);
-    int find_food(std::vector<Grass>&food_objects);
-    void eat(std::vector<Grass>&food_objects);
-    bool is_food_near(std::vector<Grass>&food_objects);
+    void find_food(vector<Grass> &food_objects);
+    void eat(vector<Grass> &food_objects);
+    bool is_food_near(vector<Grass> &food_objects);
     bool is_satisfied();
-    bool is_another_Deer_near(std::vector<Deer>&deer_vector);
-    void give_birth(TIme_of_year time,std::vector<Deer> &deer_vector);
-    void go_to_another_deer(std::vector<Deer>&deer_vector);
+    bool is_another_Deer_near(vector<Deer> &deer_vector);
+    void give_birth(TIme_of_year time, vector<Deer> &deer_vector);
+    void go_to_another_deer(vector<Deer> &deer_vector);
     void stay_for(int num_of_days,TIme_of_year time);
-    bool is_predator_near(std::vector<Tiger>&tigers);
+    bool is_predator_near(vector<Tiger> &tigers);
 };
 
 

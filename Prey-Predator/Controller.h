@@ -19,12 +19,12 @@ private:
 	vector<Deer> DeersArray;
 	
 	int deerBirthCount;
-	int tigerBirthCount;
+	int tigersHungerCount;
 public:
 
 	Controller(int x, int y);
-	vector<Tiger> getTigersArray();
-	vector<Deer> getDeersArray();
+	vector<Tiger>& getTigersArray();
+	vector<Deer>& getDeersArray();
 	Map getMap();
 	void start();	
 	void refresh(); 

@@ -21,7 +21,7 @@ Animal::Animal(int x, int y, int speed)
 {
     position = Coordinates(x, y);
     alive = true;
-    speed = speed;
+    this->speed = speed;
     hunger=100;
 }
 int Animal::get_x()

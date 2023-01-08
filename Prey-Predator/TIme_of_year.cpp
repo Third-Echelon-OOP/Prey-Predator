@@ -30,12 +30,12 @@ void TIme_of_year::next_day()
 }
 int TIme_of_year::get_day()
 {
-    return day;
+    return days;
 }
 std::string TIme_of_year::get_season()
 {
-    if(day<=89) return season.winter;
-    else if(day>=90 && day<=181) return season.spring;
-    else if(day >= 182&& day<=273) return season.summer;
+    if(days<=89) return season.winter;
+    else if(days>=90 && days<=181) return season.spring;
+    else if(days >= 182&& days<=273) return season.summer;
     else return season.autumn;
 }

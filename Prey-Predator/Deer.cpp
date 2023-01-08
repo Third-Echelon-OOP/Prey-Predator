@@ -3,20 +3,11 @@
 //
 
 #include "Deer.h"
+#include "Tiger.h"
 #include <cmath>
 
 
-void Deer::live_process(TIme_of_year time,std::vector<Grass>&food_objects,std::vector<Deer> &deer_vector)//треба обсудити метод
-{
-    hunger_reduction();
-    if(get_hunger()<=10)eat(food_objects);
-    if(get_hunger()>=50 && is_another_Deer_near(deer_vector) && time.get_season()=="spring")
-    {
-        go_to_another_deer(deer_vector);
-        give_birth(time,deer_vector);
-    }
-}
-int Deer::find_food(std::vector<Grass>&food_objects)
+void Deer::find_food(std::vector<Grass> &food_objects)
 {
     for(int i=0;i<food_objects.size();i++)
     {
@@ -26,6 +17,7 @@ int Deer::find_food(std::vector<Grass>&food_objects)
             this->Animal::move_to(food_pos);
         }
     }
+    return;
 }
 bool Deer::is_food_near(std::vector<Grass> &food_objects)
 {
