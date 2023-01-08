@@ -16,7 +16,7 @@ Animal::Animal()
     alive = true;
     num_of_animals++;
     speed = 1;
-    hunger=100;
+    hunger = 100;
 }
 Animal::Animal(int x, int y, int speed)
 {
@@ -34,9 +34,9 @@ int Animal::get_y()
 {
     return position.getY();
 }
-void Animal::death()
+void Animal::death_from_starvation()
 {
-    alive = false;
+    if(hunger<=0) alive = false;
 }
 void Animal::live()
 {
@@ -167,4 +167,8 @@ void Animal::go_straight_in_random_side()
                 break;
         }
     }
+}
+void Animal::kill()
+{
+    alive=false;
 }
