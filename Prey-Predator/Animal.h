@@ -11,7 +11,6 @@ class Animal:Move {
 private:
     bool alive;
     Coordinates position;
-    static int num_of_animals;
     int speed;
     int hunger=0;
 public:
@@ -25,7 +24,6 @@ public:
     void set_speed(int speed);
     void death_from_starvation();
     bool get_alive();
-    int get_num_of_animals();
     double Distance_between_objects(int x, int y);
     void wandering()override;
     void move_to(Coordinates &pos)override;

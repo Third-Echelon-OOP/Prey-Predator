@@ -14,7 +14,6 @@ Animal::Animal()
 {
     position = Coordinates();
     alive = true;
-    num_of_animals++;
     speed = 1;
     hunger = 100;
 }
@@ -22,7 +21,6 @@ Animal::Animal(int x, int y, int speed)
 {
     position = Coordinates(x, y);
     alive = true;
-    num_of_animals++;
     speed = speed;
     hunger=100;
 }
@@ -54,10 +52,7 @@ bool Animal::get_alive()
 {
     return alive;
 }
-int Animal::get_num_of_animals()
-{
-    return num_of_animals;
-}
+
 double Animal::Distance_between_objects(int x, int y)
 {
     return sqrt(pow(2,position.getX()-x)+pow(2,position.getY()-y));

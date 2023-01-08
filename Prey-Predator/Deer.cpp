@@ -71,7 +71,7 @@ bool Deer::is_another_Deer_near(std::vector<Deer> &deer_vector)
 }
 void Deer::give_birth(TIme_of_year time,std::vector<Deer> &deer_vector)
 {
-    stay_for(5,time);
+    stay_for(time_to_birth,time);
     Deer baby(get_x(),get_y());
     deer_vector.push_back(baby);
     set_hunger(get_hunger()-30);
