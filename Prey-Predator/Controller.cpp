@@ -5,8 +5,8 @@ using namespace std;
 
 Controller::Controller(int x, int y)
 {
-	getMap().getSize().setX(x);
-	getMap().getSize().setY(y);
+	Map newMap(x, y);
+	setMap(newMap);
 }
 
 vector<Deer>& Controller::getDeersArray()
@@ -24,6 +24,10 @@ Map Controller::getMap()
 	return gameMap;
 }
 
+void Controller::setMap(Map newMap)
+{
+	gameMap = newMap;
+}
 
 void Controller::start() 
 {
@@ -44,6 +48,12 @@ void Controller::start()
 	TigersArray.push_back(firstTiger);
 	DeersArray.push_back(firstDeer);
 
+	setStatistics();
+
+	TStatistic->getAmount().push_back(TigersArray.size());
+	DStatistic->getAmount().push_back(DeersArray.size());
+	currTime.next_day();
+
 }
 
 void Controller::refresh() 
@@ -55,12 +65,12 @@ void Controller::refresh()
 			DeersArray[i].hunger_reduction();
 			if (DeersArray[i].get_hunger() <= 10)
 			{
-				DeersArray[i].eat();
+				/*DeersArray[i].eat();*/
 			}
-			if (DeersArray[i].get_hunger() >= 50 && DeersArray[i].is_another_Deer_near(DeersArray) && time.get_season() == "spring")
+			if (DeersArray[i].get_hunger() >= 50 && DeersArray[i].is_another_Deer_near(DeersArray) && currTime.get_season() == "spring")
 			{
 				DeersArray[i].go_to_another_deer(DeersArray);
-				DeersArray[i].give_birth(time, DeersArray);
+				DeersArray[i].give_birth(currTime, DeersArray);
 			}
 		}
 	}
@@ -92,8 +102,26 @@ void Controller::refresh()
 			TigersArray[i].go_straight_in_random_side();
 		}
 	}
+
+	TStatistic->getAmount().push_back(TigersArray.size());
+	DStatistic->getAmount().push_back(DeersArray.size());
+	currTime.next_day();
+
+	TStatistic->printLastDayStatistic();
+	DStatistic->printLastDayStatistic();
+
 }
 
+
+void Controller::setStatistics()
+{
+	Population_interface* creator = new TigersPopulation();
+	TStatistic = creator->create();
+
+
+	creator = new DeersPopulation();
+	DStatistic = creator->create();
+}
 
 void Controller::saveToFile()
 {

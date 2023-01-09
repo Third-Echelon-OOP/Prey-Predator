@@ -143,12 +143,15 @@
     <ClCompile Include="Controller.cpp" />
     <ClCompile Include="Coordinates.cpp" />
     <ClCompile Include="Deer.cpp" />
+    <ClCompile Include="DeersPopulation.cpp" />
+    <ClCompile Include="DeerStatistic.cpp" />
     <ClCompile Include="Grass.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MapObject.cpp" />
-    <ClCompile Include="Statistic.cpp" />
     <ClCompile Include="Tiger.cpp" />
+    <ClCompile Include="TigersPopulation.cpp" />
+    <ClCompile Include="TigerStatistic.cpp" />
     <ClCompile Include="TIme_of_year.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -156,12 +159,17 @@
     <ClInclude Include="Controller.h" />
     <ClInclude Include="Coordinates.h" />
     <ClInclude Include="Deer.h" />
+    <ClInclude Include="DeersPopulation.h" />
+    <ClInclude Include="DeerStatistic.h" />
     <ClInclude Include="Grass.h" />
     <ClInclude Include="Interphase_movement.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapObject.h" />
-    <ClInclude Include="Statistic.h" />
+    <ClInclude Include="Population_interface.h" />
+    <ClInclude Include="Statistic_interface.h" />
     <ClInclude Include="Tiger.h" />
+    <ClInclude Include="TigersPopulation.h" />
+    <ClInclude Include="TigerStatistic.h" />
     <ClInclude Include="TIme_of_year.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

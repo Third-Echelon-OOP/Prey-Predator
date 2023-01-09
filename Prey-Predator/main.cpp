@@ -35,14 +35,44 @@ int main() {
 					{
 						cout << "Too small field to set 2 animals. Try again." << endl;
 					}
-				} while ((x < 10) || (y < 10));
+				} while ((x < 100) || (y < 100));
+
 				Controller control(x, y);
 				control.start();
-				cout << "L: " << control.getMap().getSize().getY() << " W:" << control.getMap().getSize().getX() << endl;
-				cout << "First Tiger coordinates: " << control.getTigersArray()[0].get_x() << ", "
-					<< control.getTigersArray()[0].get_y() << endl;
-				cout << "First Deer coordinates: " << control.getDeersArray()[0].get_x() << ", "
-					<< control.getDeersArray()[0].get_y() << endl;
+
+				control.refresh();
+				control.refresh();
+				control.refresh();
+				control.refresh();
+				control.refresh();
+				control.refresh();
+				control.refresh();
+				control.refresh();
+				control.refresh();
+				control.refresh();
+				control.refresh();
+				control.refresh();
+				control.refresh();
+				control.refresh();
+				control.refresh();
+				control.refresh();
+				control.refresh();
+				control.refresh();
+				control.refresh();
+				control.refresh();
+				control.refresh();
+				control.refresh();
+				control.refresh();
+				control.refresh();
+				control.refresh();
+				control.refresh();
+				control.refresh();
+				control.refresh();
+				control.refresh();
+				control.refresh();
+				control.refresh();
+				control.refresh();
+
 			}
 			case 2: {
 				load();
