@@ -13,8 +13,8 @@ MapObject::MapObject() {
     pointArr.clear();
 }
 
-MapObject::MapObject(int type, int detalisation, Coordinates *mapSize) {
-    objectType = type;
+MapObject::MapObject(int detalisation, Coordinates *mapSize) {
+    objectType = TYPE_DEFAULT;
     pointArr.clear();
     pointsGenerator(detalisation, mapSize);
 }
@@ -29,6 +29,14 @@ void MapObject::pointsGenerator(int numOfPoints, Coordinates *mapSize) {
 
 void MapObject::setType(int objectType) {
     this->objectType = objectType;
+}
+
+void MapObject::setObjectRadius(int objectRad) {
+    this->objectRad = objectRad;
+}
+
+void MapObject::setObjectCenter(Coordinates objectCenter) {
+    this->objectCenter = objectCenter;
 }
 
 int MapObject::getPointsNum() {

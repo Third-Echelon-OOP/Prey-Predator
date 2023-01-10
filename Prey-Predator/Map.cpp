@@ -34,7 +34,11 @@ std::vector<MapObject> &Map::getObjectArr() {
 
 
 void Map::generateObject1() {
-    object.push_back(MapObject(1, 4, &size));
+    object.push_back(MapObject(4, &size));
+}
+
+void Map::generateGrass(int food) {
+    object.push_back(Grass(object, &size, food));
 }
 
 
