@@ -8,6 +8,7 @@
 
 #include "Coordinates.h"
 #include "MapObject.h"
+#include "Grass.h"
 
 #include <vector>
 
@@ -25,6 +26,7 @@ public:
     std::vector<MapObject>& getObjectArr();
 
     void generateObject1();
+    void generateGrass(int food);
 
     //~Map();
 

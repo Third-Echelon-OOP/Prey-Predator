@@ -11,6 +11,7 @@ public:
 	void setY(int newY);
 	Coordinates();
 	Coordinates(int x, int y);
+	float distance(Coordinates secondPoint);
 	Coordinates operator +(Coordinates const& arg);
 	Coordinates operator -(Coordinates const& arg);
 };

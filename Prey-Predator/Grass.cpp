@@ -1,13 +1,56 @@
-//
-// Created by PC1 on 07.01.2023.
-//
-
 #include "Grass.h"
-int Grass::get_x()
+#include "SightField.h"
+#include <iostream>
+
+Grass::Grass() : MapObject()
 {
-    return position.getX();
+    foodAmount = BASIC_GRASS_FOOD;
+    setType(TYPE_GRASS);
 }
-int Grass::get_y()
-{
-    return position.getY();
+
+Grass::Grass(std::vector<MapObject> &otherObj, Coordinates* mapSize, int foodAmount = BASIC_GRASS_FOOD) {
+    this->foodAmount = foodAmount;
+    setType(TYPE_GRASS);
+    setObjectRadius(0);
+    pointsGenerator(mapSize, otherObj);
 }
+
+void Grass::pointsGenerator(Coordinates *mapSize, std::vector<MapObject> &otherObj) {
+    Coordinates objectCenter(rand() % mapSize->getX(), rand() % mapSize->getY());
+    SightField sight(objectCenter, getObjRad(), otherObj);
+    while (true)
+    {
+        sight.setObjCoordinate(objectCenter);
+        if (sight.checkSightField().size() == 0)
+        {
+            break;
+        }
+        objectCenter.setX(rand() % mapSize->getX());
+        objectCenter.setY(rand() % mapSize->getY());
+    }
+    setObjectCenter(objectCenter);
+    getPointsArr().push_back(objectCenter);
+}
+
+bool Grass::checkFood() {
+    if (foodAmount == 0)
+    {
+        return false;
+    }
+    return true;
+}
+
+bool Grass::decFood() {
+    if (foodAmount == 0)
+    {
+        return false;
+    }
+    foodAmount--;
+    return true;
+}
+
+void Grass::incFood() {
+    foodAmount++;
+}
+
+

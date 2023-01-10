@@ -8,6 +8,10 @@
 #include "Coordinates.h"
 #include <vector>
 
+#define TYPE_DEFAULT -1;
+#define TYPE_GRASS 1
+
+
 class MapObject {
 private:
     int objectType;
@@ -16,9 +20,11 @@ private:
     std::vector <Coordinates> pointArr;
 public:
     MapObject();
-    MapObject(int type, int detalisation, Coordinates* mapSize);
+    MapObject(int detalisation, Coordinates* mapSize);
 
     void setType(int objectType);
+    void setObjectRadius(int objectRad);
+    void setObjectCenter(Coordinates objectCenter);
     int getPointsNum();
     std::vector <Coordinates> &getPointsArr();
     Coordinates getObjCenter();

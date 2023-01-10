@@ -38,8 +38,7 @@ std::vector <MapObject*> &SightField::checkSightField() {
     float distance;
     for (int i = 0; i < otherObj.size(); i++)
     {
-        distance = sqrt(pow(objCoordinate.getX() - otherObj[i].getObjCenter().getX(), 2) +
-                        pow(objCoordinate.getY() - otherObj[i].getObjCenter().getY(), 2));
+        distance = objCoordinate.distance(otherObj[i].getObjCenter());
         if (distance < (objSightRad + otherObj[i].getObjRad()))
         {
             objInSight.push_back(&otherObj[i]);
