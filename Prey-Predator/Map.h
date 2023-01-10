@@ -9,21 +9,20 @@
 #include "Coordinates.h"
 #include "MapObject.h"
 
+#include <vector>
+
 
 class Map {
 private:
-    int numberOfObjects;
     Coordinates size;
-    MapObject *object;
-    int currNum;
-
+    std::vector <MapObject> object;
 public:
     Map();
     Map(int x, int y);
 
     Coordinates getSize();
     int getObjectNum();
-    MapObject* getObjectArr();
+    std::vector<MapObject>& getObjectArr();
 
     void generateObject1();
 

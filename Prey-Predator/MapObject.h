@@ -6,21 +6,22 @@
 #define PREY_PREDATOR_MAPOBJECT_H
 
 #include "Coordinates.h"
+#include <vector>
 
 class MapObject {
 private:
-    int numberOfPoints;
     int objectType;
-    Coordinates *pointArr;
+    Coordinates objectCenter;
+    std::vector <Coordinates> pointArr;
 public:
     MapObject();
-    MapObject(int type, int points, Coordinates* mapSize);
+    MapObject(int type, int detalisation, Coordinates* mapSize);
 
     void setType(int objectType);
     int getPointsNum();
-    Coordinates* getPointsArr();
+    std::vector <Coordinates> &getPointsArr();
 
-    void pointsGenerator(Coordinates*mapSize);
+    void pointsGenerator(int numOfPoints, Coordinates*mapSize);
     //~MapObject();
 };
 
