@@ -11,15 +11,13 @@
 
 
 Map::Map() {
-    numberOfObjects = 0;
+    size = Coordinates();
+    object.clear();
 }
 
 Map::Map(int x, int y) {
     size = Coordinates(x, y);
-    numberOfObjects = 100;
-    object = new MapObject[numberOfObjects];
-
-    currNum = 0;
+    object.clear();
 }
 
 Coordinates Map::getSize() {
@@ -27,19 +25,16 @@ Coordinates Map::getSize() {
 }
 
 int Map::getObjectNum() {
-    return currNum;
+    return object.size();
 }
 
-MapObject *Map::getObjectArr() {
+std::vector<MapObject> &Map::getObjectArr() {
     return object;
 }
 
 
 void Map::generateObject1() {
-    object[currNum] = MapObject(1, 4, &size);
-    currNum++;
-    if (currNum >= numberOfObjects)
-        currNum = 0;
+    object.push_back(MapObject(1, 4, &size));
 }
 
 
