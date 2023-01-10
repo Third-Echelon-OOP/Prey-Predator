@@ -39,6 +39,14 @@ std::vector <Coordinates> &MapObject::getPointsArr() {
     return pointArr;
 }
 
+Coordinates MapObject::getObjCenter() {
+    return objectCenter;
+}
+
+int MapObject::getObjRad() {
+    return objectRad;
+}
+
 //MapObject::~MapObject() {
 //    delete pointArr;
 //}

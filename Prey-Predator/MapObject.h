@@ -11,6 +11,7 @@
 class MapObject {
 private:
     int objectType;
+    int objectRad;
     Coordinates objectCenter;
     std::vector <Coordinates> pointArr;
 public:
@@ -20,6 +21,8 @@ public:
     void setType(int objectType);
     int getPointsNum();
     std::vector <Coordinates> &getPointsArr();
+    Coordinates getObjCenter();
+    int getObjRad();
 
     void pointsGenerator(int numOfPoints, Coordinates*mapSize);
     //~MapObject();
