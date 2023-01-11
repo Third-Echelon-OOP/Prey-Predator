@@ -116,7 +116,7 @@ int Animal::get_speed()
 }
 void Animal::hunger_reduction()
 {
-    hunger-=5;
+    hunger-=10;
 }
 int Animal::get_hunger(){
     return hunger;

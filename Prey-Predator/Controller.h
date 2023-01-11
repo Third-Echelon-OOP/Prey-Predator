@@ -26,8 +26,6 @@ private:
 	Statistic_interface* TStatistic;
 	Statistic_interface* DStatistic;
 	TIme_of_year currTime;
-	int deerBirthCount;
-	int tigersHungerCount;
 
 	void setMap(Map newMap);
 	void setStatistics();
@@ -40,9 +38,6 @@ public:
 	Map getMap();
 	void start();	
 	void refresh(); 
-
-	void saveToFile(); 
-	void getFromFile();
 };
 
 

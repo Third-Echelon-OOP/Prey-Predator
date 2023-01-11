@@ -73,6 +73,10 @@ void Controller::refresh()
 				DeersArray[i].give_birth(currTime, DeersArray);
 			}
 		}
+		else
+		{
+			DeersArray.erase(DeersArray.begin() + i);
+		}
 	}
 
 	
@@ -80,7 +84,8 @@ void Controller::refresh()
 	{
 		if (TigersArray[i].get_alive() == true)
 		{
-			while (TigersArray[i].get_hunger() < tigersHungerCount)
+			TigersArray[i].hunger_reduction();
+			while (TigersArray[i].get_hunger() < 60)
 			{
 				if (TigersArray[i].is_prey_near(getDeersArray()))
 				{
@@ -92,6 +97,7 @@ void Controller::refresh()
 							Coordinates pos(getDeersArray()[i].get_x(), getDeersArray()[i].get_y());
 							TigersArray[i].move_to(pos);
 							getDeersArray()[i].kill();
+							DeersArray.erase(DeersArray.begin() + i);
 							TigersArray[i].set_hunger(TigersArray[i].get_hunger() + 20);
 							TigersArray[i].fierceness();
 							
@@ -100,6 +106,10 @@ void Controller::refresh()
 				}
 			}
 			TigersArray[i].go_straight_in_random_side();
+		}
+		else
+		{
+			TigersArray.erase(TigersArray.begin() + i);
 		}
 	}
 
@@ -121,14 +131,4 @@ void Controller::setStatistics()
 
 	creator = new DeersPopulation();
 	DStatistic = creator->create();
-}
-
-void Controller::saveToFile()
-{
-
-}
-
-void Controller::getFromFile()
-{
-
 }
