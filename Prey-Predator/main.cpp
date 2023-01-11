@@ -31,11 +31,11 @@ int main() {
 					cout << "Enter width of map: ";
 					cin >> x;
 				
-					if ((x < 10) || (y < 10))
+					if ((x < 1000) || (y < 1000))
 					{
 						cout << "Too small field to set 2 animals. Try again." << endl;
 					}
-				} while ((x < 100) || (y < 100));
+				} while ((x < 1000) || (y < 1000));
 
 				Controller control(x, y);
 				control.start();
@@ -55,24 +55,8 @@ int main() {
 				control.refresh();
 				control.refresh();
 				control.refresh();
-				control.refresh();
-				control.refresh();
-				control.refresh();
-				control.refresh();
-				control.refresh();
-				control.refresh();
-				control.refresh();
-				control.refresh();
-				control.refresh();
-				control.refresh();
-				control.refresh();
-				control.refresh();
-				control.refresh();
-				control.refresh();
-				control.refresh();
-				control.refresh();
-				control.refresh();
 
+				// Добавить если популяция вымирает то завершить симуляцию
 			}
 			case 2: {
 				load();
