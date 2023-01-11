@@ -6,41 +6,11 @@
 
 #IncludeRegexTransform: 
 
-D:/ProgLab/untitled2/Prey-Predator/Prey-Predator/Animal.cpp
-Animal.h
-D:/ProgLab/untitled2/Prey-Predator/Prey-Predator/Animal.h
-algorithm
--
-cstdlib
--
-ctime
--
-cmath
--
-
 D:/ProgLab/untitled2/Prey-Predator/Prey-Predator/Animal.h
 Coordinates.h
 D:/ProgLab/untitled2/Prey-Predator/Prey-Predator/Coordinates.h
 Interphase_movement.h
 D:/ProgLab/untitled2/Prey-Predator/Prey-Predator/Interphase_movement.h
-
-D:/ProgLab/untitled2/Prey-Predator/Prey-Predator/Controller.cpp
-Controller.h
-D:/ProgLab/untitled2/Prey-Predator/Prey-Predator/Controller.h
-iostream
--
-
-D:/ProgLab/untitled2/Prey-Predator/Prey-Predator/Controller.h
-vector
--
-Animal.h
-D:/ProgLab/untitled2/Prey-Predator/Prey-Predator/Animal.h
-Map.h
-D:/ProgLab/untitled2/Prey-Predator/Prey-Predator/Map.h
-
-D:/ProgLab/untitled2/Prey-Predator/Prey-Predator/Coordinates.cpp
-Coordinates.h
-D:/ProgLab/untitled2/Prey-Predator/Prey-Predator/Coordinates.h
 
 D:/ProgLab/untitled2/Prey-Predator/Prey-Predator/Coordinates.h
 
@@ -70,42 +40,6 @@ D:/ProgLab/untitled2/Prey-Predator/Prey-Predator/Interphase_movement.h
 Coordinates.h
 D:/ProgLab/untitled2/Prey-Predator/Prey-Predator/Coordinates.h
 
-D:/ProgLab/untitled2/Prey-Predator/Prey-Predator/Map.cpp
-Map.h
-D:/ProgLab/untitled2/Prey-Predator/Prey-Predator/Map.h
-algorithm
--
-cstdlib
--
-ctime
--
-
-D:/ProgLab/untitled2/Prey-Predator/Prey-Predator/Map.h
-Coordinates.h
-D:/ProgLab/untitled2/Prey-Predator/Prey-Predator/Coordinates.h
-MapObject.h
-D:/ProgLab/untitled2/Prey-Predator/Prey-Predator/MapObject.h
-
-D:/ProgLab/untitled2/Prey-Predator/Prey-Predator/MapObject.cpp
-MapObject.h
-D:/ProgLab/untitled2/Prey-Predator/Prey-Predator/MapObject.h
-algorithm
--
-cstdlib
--
-ctime
--
-
-D:/ProgLab/untitled2/Prey-Predator/Prey-Predator/MapObject.h
-Coordinates.h
-D:/ProgLab/untitled2/Prey-Predator/Prey-Predator/Coordinates.h
-
-D:/ProgLab/untitled2/Prey-Predator/Prey-Predator/Statistic.cpp
-Statistic.h
-D:/ProgLab/untitled2/Prey-Predator/Prey-Predator/Statistic.h
-
-D:/ProgLab/untitled2/Prey-Predator/Prey-Predator/Statistic.h
-
 D:/ProgLab/untitled2/Prey-Predator/Prey-Predator/TIme_of_year.h
 string
 -
@@ -121,10 +55,4 @@ vector
 -
 Deer.h
 D:/ProgLab/untitled2/Prey-Predator/Prey-Predator/Deer.h
-
-D:/ProgLab/untitled2/Prey-Predator/Prey-Predator/main.cpp
-iostream
--
-Controller.h
-D:/ProgLab/untitled2/Prey-Predator/Prey-Predator/Controller.h
 
