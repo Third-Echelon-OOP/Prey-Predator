@@ -11,9 +11,9 @@ void Deer::find_food(std::vector<Grass> &food_objects)
 {
     for(int i=0;i<food_objects.size();i++)
     {
-        if(Distance_between_objects(food_objects[i].get_x(),food_objects[i].get_y())<=double(100))
+        if(Distance_between_objects(food_objects[i].getObjCenter().getX(), food_objects[i].getObjCenter().getY())<=double(100))
         {
-            Coordinates food_pos(food_objects[i].get_x(),food_objects[i].get_y());
+            Coordinates food_pos(food_objects[i].getObjCenter().getX(), food_objects[i].getObjCenter().getY());
             this->Animal::move_to(food_pos);
         }
     }
@@ -23,7 +23,7 @@ bool Deer::is_food_near(std::vector<Grass> &food_objects)
 {
     for(int i=0;i<food_objects.size();i++)
     {
-        if(Distance_between_objects(food_objects[i].get_x(),food_objects[i].get_y())<=this->get_speed())
+        if(Distance_between_objects(food_objects[i].getObjCenter().getX(), food_objects[i].getObjCenter().getY()) <= this->get_speed())
         {
             return true;
         }
