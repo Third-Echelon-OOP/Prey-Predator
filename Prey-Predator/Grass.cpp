@@ -21,7 +21,7 @@ void Grass::pointsGenerator(Coordinates *mapSize, std::vector<MapObject> &otherO
     while (true)
     {
         sight.setObjCoordinate(objectCenter);
-        if (sight.checkSightField().size() == 0)
+        if (sight.checkSightField()->size() == 0)
         {
             break;
         }
@@ -29,7 +29,7 @@ void Grass::pointsGenerator(Coordinates *mapSize, std::vector<MapObject> &otherO
         objectCenter.setY(rand() % mapSize->getY());
     }
     setObjectCenter(objectCenter);
-    getPointsArr().push_back(objectCenter);
+    addPointToArray(objectCenter);
 }
 
 bool Grass::checkFood() {

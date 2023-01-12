@@ -26,7 +26,8 @@ public:
     void setObjectRadius(int objectRad);
     void setObjectCenter(Coordinates objectCenter);
     int getPointsNum();
-    std::vector <Coordinates> &getPointsArr();
+    std::vector <Coordinates> *getPointsArr();
+    void addPointToArray(Coordinates newPoint);
     Coordinates getObjCenter();
     int getObjRad();
 
