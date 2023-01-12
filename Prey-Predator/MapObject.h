@@ -11,8 +11,6 @@
 #define TYPE_DEFAULT -1;
 #define TYPE_GRASS 1
 
-class Map;
-
 class MapObject {
 private:
     int objectType;
@@ -32,11 +30,14 @@ public:
     void addPointToArray(Coordinates newPoint);
 
     int getPointsNum();
-    std::vector <Coordinates> *getPointsArr();
+    std::vector <Coordinates> &getPointsArr();
     Coordinates getObjCenter();
     int getObjType();
     int getObjRad();
     long getID();
+
+    bool checkFood();
+    void changeFood(int change);
 
     void setID(long objectID);
     long generateID();

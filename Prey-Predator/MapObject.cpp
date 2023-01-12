@@ -58,8 +58,8 @@ int MapObject::getPointsNum() {
     return pointArr.size();
 }
 
-std::vector <Coordinates> *MapObject::getPointsArr() {
-    return &pointArr;
+std::vector <Coordinates> &MapObject::getPointsArr() {
+    return pointArr;
 }
 
 void MapObject::addPointToArray(Coordinates newPoint) {
@@ -82,6 +82,10 @@ long MapObject::getID() {
     return objectID;
 }
 
-//MapObject::~MapObject() {
-//    delete pointArr;
-//}
+bool MapObject::checkFood() {
+    return false;
+}
+
+void MapObject::changeFood(int change) {
+    return;
+}
