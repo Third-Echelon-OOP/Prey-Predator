@@ -12,7 +12,7 @@ class Grass: public MapObject
 private:
     int foodAmount;
 
-    void pointsGenerator(Map *map);
+    /*void pointsGenerator(Map *map);*/
 public:
     Grass();
     Grass(Map *map, int foodAmount = BASIC_GRASS_FOOD);

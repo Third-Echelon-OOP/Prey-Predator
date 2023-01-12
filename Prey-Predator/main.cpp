@@ -13,8 +13,7 @@ int main() {
 	int command;
 	cout << "--------Prey - predator model--------" << endl
 		<< "Pres '1' to start simulation" << endl
-		<< "Pres '2' to load existing simulation" << endl
-		<< "Pres '3' to exit program" << endl;
+		<< "Pres '2' to exit program" << endl;
 
 	while (1) {
 		cout << "Enter command:" << endl;
@@ -43,25 +42,29 @@ int main() {
 				while (1)
 				{
 					control.refresh();
-					cout << "Press '0' to pause simulation" << endl << "Press '3' to exit program" << endl;
+					cout << "Press '0' to pause simulation" << endl << "Press '1' to continue simulation" << endl;
 					cin >> command;
-					if (command == 0)
+					switch (command)
 					{
-						cout << "Simulation paused" << endl << "Press any button to continue";
+					case 0:
+					{
+						cout << "Press '1' to continue simulation" << endl << "Press '2' to exit simulation!!!!!!" << endl;
+						cin >> command;
+						if (command == 1)continue;
+						else if (command == 2)break;
+					}
+					case 1:
+					{
 						continue;
 					}
-					else if (control.getDeersArray().size() == 0 || control.getTigersArray().size() == 0 || command == 3)
-					{
+					default:
 						break;
 					}
 				}
 			}
 			case 2: {
-				load();
-			}
-			case 3: {
 				cout << "Close app" << endl;
-				exit(3);
+				exit(2);
 			}
 			default: {
 				cout << "No such command. Try one more time" << endl;

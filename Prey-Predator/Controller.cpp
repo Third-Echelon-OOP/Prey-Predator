@@ -31,28 +31,49 @@ void Controller::setMap(Map newMap)
 
 void Controller::start() 
 {
-	int xTiger = rand() % gameMap.getSize().getX() + 1;
-	int yTiger = rand() % gameMap.getSize().getY() + 1;
+	int xTiger1 = rand() % gameMap.getSize().getX() + 1;
+	int yTiger1 = rand() % gameMap.getSize().getY() + 1;
 
-	int xDeer = rand() % gameMap.getSize().getX() + 1;
-	int yDeer = rand() % gameMap.getSize().getY() + 1;
+	int xDeer1 = rand() % gameMap.getSize().getX() + 1;
+	int yDeer1 = rand() % gameMap.getSize().getY() + 1;
 
-	while (xTiger == xDeer && yTiger == yDeer)
+	while (xTiger1 == xDeer1 && yTiger1 == yDeer1)
 	{
-		int xDeer = rand() % gameMap.getSize().getX() + 1;
-		int yDeer = rand() % gameMap.getSize().getY() + 1;
+		int xDeer1 = rand() % gameMap.getSize().getX() + 1;
+		int yDeer1 = rand() % gameMap.getSize().getY() + 1;
 	}
-	Tiger firstTiger(xTiger, yTiger, 1);
-	Deer firstDeer(xDeer, yDeer, 1);
+	Tiger firstTiger(xTiger1, yTiger1, 1);
+	Deer firstDeer(xDeer1, yDeer1, 1);
+
+	int xTiger2 = rand() % gameMap.getSize().getX() + 1;
+	int yTiger2 = rand() % gameMap.getSize().getY() + 1;
+
+	int xDeer2 = rand() % gameMap.getSize().getX() + 1;
+	int yDeer2 = rand() % gameMap.getSize().getY() + 1;
+
+	while (xTiger2 == xDeer2 && yTiger2 == yDeer2)
+	{
+		int xDeer2 = rand() % gameMap.getSize().getX() + 1;
+		int yDeer2 = rand() % gameMap.getSize().getY() + 1;
+	}
+	Tiger secondTiger(xTiger2, yTiger2, 1);
+	Deer secondDeer(xDeer2, yDeer2, 1);
 
 	TigersArray.push_back(firstTiger);
 	DeersArray.push_back(firstDeer);
+	TigersArray.push_back(secondTiger);
+	DeersArray.push_back(secondDeer);
 
 	setStatistics();
 
 	TStatistic->getAmount().push_back(TigersArray.size());
 	DStatistic->getAmount().push_back(DeersArray.size());
 	currTime.next_day();
+
+	for (int i = 0; i < 20; i++)
+	{
+		gameMap.generateGrass(20);
+	}
 
 }
 
@@ -63,9 +84,9 @@ void Controller::refresh()
 		if (DeersArray[i].get_alive() == true)
 		{
 			DeersArray[i].hunger_reduction();
-			if (DeersArray[i].get_hunger() <= 10)
+			if (DeersArray[i].get_hunger() <= 60)
 			{
-				/*DeersArray[i].eat();*/
+				DeersArray[i].eat(gameMap.getObjectArr());
 			}
 			if (DeersArray[i].get_hunger() >= 50 && DeersArray[i].is_another_Deer_near(DeersArray) && currTime.get_season() == "spring")
 			{
@@ -85,7 +106,8 @@ void Controller::refresh()
 		if (TigersArray[i].get_alive() == true)
 		{
 			TigersArray[i].hunger_reduction();
-			while (TigersArray[i].get_hunger() < 60)
+			while (TigersArray[i].get_hunger() <= 60) // Коли жетва далеко від тигра він рандомно зміщується поки не знайде Оленя
+														// Це займає багато часу і програма висне
 			{
 				if (TigersArray[i].is_prey_near(getDeersArray()))
 				{
@@ -104,8 +126,8 @@ void Controller::refresh()
 						}
 					}
 				}
+				TigersArray[i].go_straight_in_random_side();
 			}
-			TigersArray[i].go_straight_in_random_side();
 		}
 		else
 		{
@@ -116,7 +138,7 @@ void Controller::refresh()
 	TStatistic->getAmount().push_back(TigersArray.size());
 	DStatistic->getAmount().push_back(DeersArray.size());
 	currTime.next_day();
-
+	gameMap.generateGrass(20);
 	TStatistic->printLastDayStatistic();
 	DStatistic->printLastDayStatistic();
 
