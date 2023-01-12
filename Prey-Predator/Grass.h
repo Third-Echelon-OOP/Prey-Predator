@@ -10,10 +10,11 @@ class Grass: public MapObject
 {
 private:
     int foodAmount;
+
+    void pointsGenerator(Map *map);
 public:
     Grass();
-    Grass(std::vector<MapObject> &otherObj, Coordinates* mapSize, int foodAmount = BASIC_GRASS_FOOD);
-    void pointsGenerator(Coordinates *mapSize, std::vector<MapObject> &otherObj);
+    Grass(Map *map, int foodAmount = BASIC_GRASS_FOOD);
    
     bool checkFood();
     bool decFood();

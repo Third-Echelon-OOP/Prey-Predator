@@ -23,6 +23,7 @@ public:
 
     Coordinates getSize();
     int getObjectNum();
+    MapObject* getObjectI(int i);
     std::vector<MapObject>& getObjectArr();
 
     void generateObject1();

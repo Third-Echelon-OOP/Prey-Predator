@@ -5,15 +5,15 @@ SightField::SightField()
 {
     objCoordinate = Coordinates();
     objSightRad = 0;
-    otherObj.clear();
+    map = nullptr;
     objInSight.clear();
 }
 
-SightField::SightField(Coordinates objCoordinate, int objSightRad, std::vector <MapObject> &otherObj)
+SightField::SightField(Coordinates objCoordinate, int objSightRad, Map *map)
 {
     this->objCoordinate = objCoordinate;
     this->objSightRad = objSightRad;
-    this->otherObj = otherObj;
+    this->map = map;
     objInSight.clear();
 }
 
@@ -25,23 +25,22 @@ void SightField::setObjSightRad(int objSightRad) {
     this->objSightRad = objSightRad;
 }
 
-void  SightField::setOtherObj(std::vector <MapObject> &otherObj) {
-    this->otherObj = otherObj;
-}
-
 std::vector <MapObject*> *SightField::getObjInSight() {
     return &objInSight;
 }
 
 std::vector <MapObject*> *SightField::checkSightField() {
+    if (map == nullptr) {
+        return nullptr;
+    }
     objInSight.clear();
     float distance;
-    for (int i = 0; i < otherObj.size(); i++)
+    for (int i = 0; i < map->getObjectNum(); i++)
     {
-        distance = objCoordinate.distance(otherObj[i].getObjCenter());
-        if (distance < (objSightRad + otherObj[i].getObjRad()))
+        distance = objCoordinate.distance(map->getObjectI(i)->getObjCenter());
+        if (distance < (objSightRad + map->getObjectI(i)->getObjRad()))
         {
-            objInSight.push_back(&otherObj[i]);
+            objInSight.push_back(map->getObjectI(i));
         }
     }
     return &objInSight;
