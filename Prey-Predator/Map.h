@@ -31,7 +31,6 @@ public:
 
     void changeObjectFood(long id, int change);
 
-    //~Map();
 
 };
 
