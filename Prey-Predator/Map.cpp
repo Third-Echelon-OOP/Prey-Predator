@@ -28,17 +28,25 @@ int Map::getObjectNum() {
     return object.size();
 }
 
+MapObject* Map::getObjectI(int i) {
+    if (i >= object.size())
+    {
+        return {};
+    }
+    return &object[i];
+}
+
 std::vector<MapObject> &Map::getObjectArr() {
     return object;
 }
 
 
 void Map::generateObject1() {
-    object.push_back(MapObject(4, &size));
+    object.push_back(MapObject(4, this));
 }
 
 void Map::generateGrass(int food) {
-    object.push_back(Grass(object, &size, food));
+    object.push_back(Grass(this, food));
 }
 
 

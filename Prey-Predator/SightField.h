@@ -3,6 +3,7 @@
 
 #include "Coordinates.h"
 #include "MapObject.h"
+#include "Map.h"
 #include <vector>
 
 class SightField
@@ -10,15 +11,14 @@ class SightField
 private:
     Coordinates objCoordinate;
     int objSightRad;
-    std::vector <MapObject> otherObj;
+    Map *map;
     std::vector <MapObject*> objInSight;
 public:
     SightField();
-    SightField(Coordinates objCoordinate, int objSightRad, std::vector <MapObject> &otherObj);
+    SightField(Coordinates objCoordinate, int objSightRad, Map *map);
     
     void setObjCoordinate(Coordinates objCoordinate);
     void setObjSightRad(int objSightRad);
-    void setOtherObj(std::vector <MapObject> &otherObj);
 
     std::vector <MapObject*> *getObjInSight();
 

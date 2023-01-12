@@ -8,16 +8,17 @@ Grass::Grass() : MapObject()
     setType(TYPE_GRASS);
 }
 
-Grass::Grass(std::vector<MapObject> &otherObj, Coordinates* mapSize, int foodAmount = BASIC_GRASS_FOOD) {
+Grass::Grass(Map *map, int foodAmount = BASIC_GRASS_FOOD) {
     this->foodAmount = foodAmount;
     setType(TYPE_GRASS);
     setObjectRadius(0);
-    pointsGenerator(mapSize, otherObj);
+    setID(generateID());
+    pointsGenerator(map);
 }
 
-void Grass::pointsGenerator(Coordinates *mapSize, std::vector<MapObject> &otherObj) {
-    Coordinates objectCenter(rand() % mapSize->getX(), rand() % mapSize->getY());
-    SightField sight(objectCenter, getObjRad(), otherObj);
+void Grass::pointsGenerator(Map *map) {
+    Coordinates objectCenter(rand() % map->getSize().getX(), rand() % map->getSize().getY());
+    SightField sight(objectCenter, getObjRad(), map);
     while (true)
     {
         sight.setObjCoordinate(objectCenter);
@@ -25,8 +26,8 @@ void Grass::pointsGenerator(Coordinates *mapSize, std::vector<MapObject> &otherO
         {
             break;
         }
-        objectCenter.setX(rand() % mapSize->getX());
-        objectCenter.setY(rand() % mapSize->getY());
+        objectCenter.setX(rand() % map->getSize().getX());
+        objectCenter.setY(rand() % map->getSize().getY());
     }
     setObjectCenter(objectCenter);
     addPointToArray(objectCenter);
