@@ -9,8 +9,6 @@
 #include <ctime>
 
 
-
-
 Map::Map() {
     size = Coordinates();
     object.clear();
