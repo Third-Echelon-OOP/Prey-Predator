@@ -1,8 +1,7 @@
 //
 // Created by oleks on 25.10.2022.
 //
-
-#include "MapObject.h"
+#include "Map.h"
 #include <algorithm>
 #include <cstdlib>
 #include <ctime>

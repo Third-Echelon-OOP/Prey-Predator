@@ -3,6 +3,7 @@
 //
 
 #include "Map.h"
+#include "Grass.h"
 #include <algorithm>
 #include <cstdlib>
 #include <ctime>

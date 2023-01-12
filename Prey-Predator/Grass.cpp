@@ -8,7 +8,7 @@ Grass::Grass() : MapObject()
     setType(TYPE_GRASS);
 }
 
-Grass::Grass(Map *map, int foodAmount = BASIC_GRASS_FOOD) {
+Grass::Grass(Map *map, int foodAmount) {
     this->foodAmount = foodAmount;
     setType(TYPE_GRASS);
     setObjectRadius(0);

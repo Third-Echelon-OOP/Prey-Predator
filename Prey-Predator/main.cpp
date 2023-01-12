@@ -40,23 +40,21 @@ int main() {
 				Controller control(x, y);
 				control.start();
 
-				control.refresh();
-				control.refresh();
-				control.refresh();
-				control.refresh();
-				control.refresh();
-				control.refresh();
-				control.refresh();
-				control.refresh();
-				control.refresh();
-				control.refresh();
-				control.refresh();
-				control.refresh();
-				control.refresh();
-				control.refresh();
-				control.refresh();
-
-				// Добавить если популяция вымирает то завершить симуляцию
+				while (1)
+				{
+					control.refresh();
+					cout << "Press '0' to pause simulation" << endl << "Press '3' to exit program" << endl;
+					cin >> command;
+					if (command == 0)
+					{
+						cout << "Simulation paused" << endl << "Press any button to continue";
+						continue;
+					}
+					else if (control.getDeersArray().size() == 0 || control.getTigersArray().size() == 0 || command == 3)
+					{
+						break;
+					}
+				}
 			}
 			case 2: {
 				load();
