@@ -27,6 +27,10 @@ public:
     void generateObject1();
     void generateGrass(int food);
 
+    MapObject* findObject(long id);
+
+    void changeObjectFood(long id, int change);
+
     //~Map();
 
 };

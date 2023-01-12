@@ -18,8 +18,7 @@ public:
     Grass(Map *map, int foodAmount = BASIC_GRASS_FOOD);
    
     bool checkFood();
-    bool decFood();
-    void incFood();
+    void changeFood(int change);
     //~Grass();
 };
 

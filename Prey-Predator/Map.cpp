@@ -48,6 +48,26 @@ void Map::generateGrass(int food) {
     object.push_back(Grass(this, food));
 }
 
+MapObject* Map::findObject(long id) {
+    for (int i = 0; i < object.size(); i++)
+    {
+        if (object[i].getID() == id)
+        {
+            return &object[i];
+        }
+        
+    }
+}
+
+void Map::changeObjectFood(long id, int change) {
+    MapObject *target = findObject(id);
+    if (target->getObjType() == TYPE_GRASS)
+    {
+        target->getObjType();
+    }
+    
+}
+
 
 //Map::~Map() {
 //    delete object;
