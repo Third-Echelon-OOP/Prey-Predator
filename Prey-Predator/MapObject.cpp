@@ -43,8 +43,12 @@ int MapObject::getPointsNum() {
     return pointArr.size();
 }
 
-std::vector <Coordinates> &MapObject::getPointsArr() {
-    return pointArr;
+std::vector <Coordinates> *MapObject::getPointsArr() {
+    return &pointArr;
+}
+
+void MapObject::addPointToArray(Coordinates newPoint) {
+    pointArr.push_back(newPoint);
 }
 
 Coordinates MapObject::getObjCenter() {

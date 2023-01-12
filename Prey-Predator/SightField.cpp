@@ -29,11 +29,11 @@ void  SightField::setOtherObj(std::vector <MapObject> &otherObj) {
     this->otherObj = otherObj;
 }
 
-std::vector <MapObject*> &SightField::getObjInSight() {
-    return objInSight;
+std::vector <MapObject*> *SightField::getObjInSight() {
+    return &objInSight;
 }
 
-std::vector <MapObject*> &SightField::checkSightField() {
+std::vector <MapObject*> *SightField::checkSightField() {
     objInSight.clear();
     float distance;
     for (int i = 0; i < otherObj.size(); i++)
@@ -44,5 +44,5 @@ std::vector <MapObject*> &SightField::checkSightField() {
             objInSight.push_back(&otherObj[i]);
         }
     }
-    return objInSight;
+    return &objInSight;
 }

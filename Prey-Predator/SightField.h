@@ -20,9 +20,9 @@ public:
     void setObjSightRad(int objSightRad);
     void setOtherObj(std::vector <MapObject> &otherObj);
 
-    std::vector <MapObject*> &getObjInSight();
+    std::vector <MapObject*> *getObjInSight();
 
-    std::vector <MapObject*> &checkSightField();
+    std::vector <MapObject*> *checkSightField();
 
     //~SightField();
 };
