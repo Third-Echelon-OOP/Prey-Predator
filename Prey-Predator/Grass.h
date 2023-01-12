@@ -2,6 +2,7 @@
 #define PREY_PREDATOR_GRASS_H
 
 #include "MapObject.h"
+#include "Map.h"
 #include <vector>
 
 #define BASIC_GRASS_FOOD 5

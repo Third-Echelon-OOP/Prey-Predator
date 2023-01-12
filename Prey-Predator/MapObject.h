@@ -6,12 +6,12 @@
 #define PREY_PREDATOR_MAPOBJECT_H
 
 #include "Coordinates.h"
-#include "Map.h"
 #include <vector>
 
 #define TYPE_DEFAULT -1;
 #define TYPE_GRASS 1
 
+class Map;
 
 class MapObject {
 private:
