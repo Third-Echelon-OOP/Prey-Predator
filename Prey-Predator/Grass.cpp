@@ -1,5 +1,4 @@
 #include "Grass.h"
-#include "SightField.h"
 #include <iostream>
 
 Grass::Grass() : MapObject()
@@ -8,30 +7,36 @@ Grass::Grass() : MapObject()
     setType(TYPE_GRASS);
 }
 
-Grass::Grass(Map *map, int foodAmount) {
+Grass::Grass(Coordinates &maxSize, std::vector<MapObject> &otherObj, int foodAmount) {
     this->foodAmount = foodAmount;
     setType(TYPE_GRASS);
-    setObjectRadius(0);
+    setObjectRadius(1);
     setID(generateID());
-    /*pointsGenerator(map);*/
+    pointsGenerator(maxSize, otherObj);
 }
 
-//void Grass::pointsGenerator(Map *map) {
-//    Coordinates objectCenter(rand() % map->getSize().getX(), rand() % map->getSize().getY());
-//    SightField sight(objectCenter, getObjRad(), map);
-//    while (true)
-//    {
-//        sight.setObjCoordinate(objectCenter);
-//        if (sight.checkSightField()->size() == 0)
-//        {
-//            break;
-//        }
-//        objectCenter.setX(rand() % map->getSize().getX());
-//        objectCenter.setY(rand() % map->getSize().getY());
-//    }
-//    setObjectCenter(objectCenter);
-//    addPointToArray(objectCenter);
-//}
+void Grass::pointsGenerator(Coordinates &maxSize, std::vector<MapObject> &otherObj) {
+   Coordinates objectCenter;
+   float distance;
+   bool flag = true;
+   while (flag)
+   {
+       flag = false;
+       objectCenter.setX(rand() % maxSize.getX());
+       objectCenter.setY(rand() % maxSize.getY());
+       for (int i = 0; i < otherObj.size(); i++)
+       {
+            distance = getObjCenter().distance(otherObj[i].getObjCenter());
+            if (distance < (getObjRad() + otherObj[i].getObjRad()))
+            {
+                flag = true;
+                break;
+            }
+       }
+   }
+   setObjectCenter(objectCenter);
+   addPointToArray(objectCenter);
+}
 
 bool Grass::checkFood() {
     if (foodAmount == 0)

@@ -27,12 +27,12 @@ int Map::getObjectNum() {
     return object.size();
 }
 
-MapObject* Map::getObjectI(int i) {
+MapObject& Map::getObjectI(int i) {
     if (i >= object.size())
     {
-        return {};
+        return;
     }
-    return &object[i];
+    return object[i];
 }
 
 std::vector<MapObject> &Map::getObjectArr() {
@@ -41,35 +41,31 @@ std::vector<MapObject> &Map::getObjectArr() {
 
 
 void Map::generateObject1() {
-    object.push_back(MapObject(4, this));
+    object.push_back(MapObject(4, getSize()));
 }
 
 void Map::generateGrass(int food) {
-    object.push_back(Grass(this, food));
+    object.push_back(Grass(size, object, food));
 }
 
-MapObject* Map::findObject(long id) {
+MapObject& Map::findObject(long id) {
     for (int i = 0; i < object.size(); i++)
     {
         if (object[i].getID() == id)
         {
-            return &object[i];
+            return object[i];
         }
         
     }
 }
 
 void Map::changeObjectFood(long id, int change) {
-    MapObject *target = findObject(id);
-    if (target->getObjType() == TYPE_GRASS)
+    MapObject target = findObject(id);
+    if (target.getObjType() == TYPE_GRASS)
     {
-        target->getObjType();
+        target.changeFood(change);
     }
-    
 }
 
 
-//Map::~Map() {
-//    delete object;
-//}
 

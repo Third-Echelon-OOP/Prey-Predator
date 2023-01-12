@@ -21,17 +21,16 @@ public:
 
     Coordinates getSize();
     int getObjectNum();
-    MapObject* getObjectI(int i);
+    MapObject& getObjectI(int i);
     std::vector<MapObject>& getObjectArr();
 
     void generateObject1();
     void generateGrass(int food);
 
-    MapObject* findObject(long id);
+    MapObject& findObject(long id);
 
     void changeObjectFood(long id, int change);
 
-    //~Map();
 
 };
 
