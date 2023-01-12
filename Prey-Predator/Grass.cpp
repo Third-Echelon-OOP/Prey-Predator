@@ -41,17 +41,13 @@ bool Grass::checkFood() {
     return true;
 }
 
-bool Grass::decFood() {
-    if (foodAmount == 0)
-    {
-        return false;
+void Grass::changeFood(int change) {
+    if (foodAmount + change < 0){
+        foodAmount = 0;
     }
-    foodAmount--;
-    return true;
-}
-
-void Grass::incFood() {
-    foodAmount++;
+    else {
+        foodAmount += change;
+    }
 }
 
 

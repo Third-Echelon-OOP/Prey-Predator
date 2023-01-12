@@ -6,7 +6,7 @@
 #define PREY_PREDATOR_MAPOBJECT_H
 
 #include "Coordinates.h"
-#include "Map.h"
+//#include "Map.h"
 #include <vector>
 
 #define TYPE_DEFAULT -1;
@@ -24,7 +24,7 @@ private:
     void pointsGenerator(int numOfPoints, Coordinates mapSize);
 public:
     MapObject();
-    MapObject(int detalisation, Map *map);
+    MapObject(int detalisation, Coordinates mapSize);
 
     void setType(int objectType);
     void setObjectRadius(int objectRad);
@@ -34,6 +34,7 @@ public:
     int getPointsNum();
     std::vector <Coordinates> *getPointsArr();
     Coordinates getObjCenter();
+    int getObjType();
     int getObjRad();
     long getID();
 

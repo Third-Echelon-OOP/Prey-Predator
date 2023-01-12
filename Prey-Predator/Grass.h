@@ -2,6 +2,7 @@
 #define PREY_PREDATOR_GRASS_H
 
 #include "MapObject.h"
+#include "Map.h"
 #include <vector>
 
 #define BASIC_GRASS_FOOD 5
@@ -17,8 +18,7 @@ public:
     Grass(Map *map, int foodAmount = BASIC_GRASS_FOOD);
    
     bool checkFood();
-    bool decFood();
-    void incFood();
+    void changeFood(int change);
     //~Grass();
 };
 
