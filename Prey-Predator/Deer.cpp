@@ -7,7 +7,7 @@
 #include <cmath>
 
 
-void Deer::find_food(std::vector<Grass> &food_objects)
+void Deer::find_food(std::vector<MapObject> &food_objects)
 {
     for(int i=0;i<food_objects.size();i++)
     {
@@ -19,7 +19,7 @@ void Deer::find_food(std::vector<Grass> &food_objects)
     }
     return;
 }
-bool Deer::is_food_near(std::vector<Grass> &food_objects)
+bool Deer::is_food_near(std::vector<MapObject> &food_objects)
 {
     for(int i=0;i<food_objects.size();i++)
     {
@@ -30,14 +30,14 @@ bool Deer::is_food_near(std::vector<Grass> &food_objects)
     }
     return false;
 }
-void Deer::eat(std::vector<Grass>&food_objects)
+void Deer::eat(std::vector<MapObject>&food_objects)
 {
     while(is_satisfied()!=1)
     {
         find_food(food_objects);
-        if(is_food_near(food_objects)&&get_hunger()<=10)
+        if(is_food_near(food_objects)&&get_hunger()<=60)
         {
-            set_hunger(get_hunger()+80);
+            set_hunger(get_hunger()+20);
         }
         else
         {
@@ -47,7 +47,7 @@ void Deer::eat(std::vector<Grass>&food_objects)
 }
 bool Deer::is_satisfied()
 {
-    if(this->get_hunger()>=80)return true;
+    if(this->get_hunger()>=60)return true;
     else return false;
 }
 bool Deer::is_another_Deer_near(std::vector<Deer> &deer_vector)

@@ -33,9 +33,9 @@ public:
         this->time_to_birth = time_to_birth;
 	}
 
-    void find_food(vector<Grass> &food_objects);
-    void eat(vector<Grass> &food_objects);
-    bool is_food_near(vector<Grass> &food_objects);
+    void find_food(vector<MapObject> &food_objects);
+    void eat(vector<MapObject> &food_objects);
+    bool is_food_near(vector<MapObject> &food_objects);
     bool is_satisfied();
     bool is_another_Deer_near(vector<Deer> &deer_vector);
     void give_birth(TIme_of_year time, vector<Deer> &deer_vector);

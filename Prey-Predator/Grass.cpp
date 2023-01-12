@@ -8,30 +8,30 @@ Grass::Grass() : MapObject()
     setType(TYPE_GRASS);
 }
 
-Grass::Grass(Map *map, int foodAmount = BASIC_GRASS_FOOD) {
+Grass::Grass(Map *map, int foodAmount) {
     this->foodAmount = foodAmount;
     setType(TYPE_GRASS);
     setObjectRadius(0);
     setID(generateID());
-    pointsGenerator(map);
+    /*pointsGenerator(map);*/
 }
 
-void Grass::pointsGenerator(Map *map) {
-    Coordinates objectCenter(rand() % map->getSize().getX(), rand() % map->getSize().getY());
-    SightField sight(objectCenter, getObjRad(), map);
-    while (true)
-    {
-        sight.setObjCoordinate(objectCenter);
-        if (sight.checkSightField()->size() == 0)
-        {
-            break;
-        }
-        objectCenter.setX(rand() % map->getSize().getX());
-        objectCenter.setY(rand() % map->getSize().getY());
-    }
-    setObjectCenter(objectCenter);
-    addPointToArray(objectCenter);
-}
+//void Grass::pointsGenerator(Map *map) {
+//    Coordinates objectCenter(rand() % map->getSize().getX(), rand() % map->getSize().getY());
+//    SightField sight(objectCenter, getObjRad(), map);
+//    while (true)
+//    {
+//        sight.setObjCoordinate(objectCenter);
+//        if (sight.checkSightField()->size() == 0)
+//        {
+//            break;
+//        }
+//        objectCenter.setX(rand() % map->getSize().getX());
+//        objectCenter.setY(rand() % map->getSize().getY());
+//    }
+//    setObjectCenter(objectCenter);
+//    addPointToArray(objectCenter);
+//}
 
 bool Grass::checkFood() {
     if (foodAmount == 0)

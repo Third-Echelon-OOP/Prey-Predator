@@ -8,8 +8,6 @@
 
 #include "Coordinates.h"
 #include "MapObject.h"
-#include "Grass.h"
-
 #include <vector>
 
 
