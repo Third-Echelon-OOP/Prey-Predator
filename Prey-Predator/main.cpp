@@ -30,11 +30,11 @@ int main() {
 					cout << "Enter width of map: ";
 					cin >> x;
 				
-					if ((x < 1000) || (y < 1000))
+					if ((x < 100) || (y < 100))
 					{
-						cout << "Too small field to set 2 animals. Try again." << endl;
+						cout << "Too small map. Try again." << endl;
 					}
-				} while ((x < 1000) || (y < 1000));
+				} while ((x < 100) || (y < 100));
 
 				Controller control(x, y);
 				control.start();

@@ -40,7 +40,7 @@ void Controller::start()
 		TigersArray.push_back(Tiger);
 	}
 
-	for (int i = 0; i < 20; i++)
+	for (int i = 0; i < 10; i++)
 	{
 		xDeer = rand() % gameMap.getSize().getX() + 1;
 		yDeer = rand() % gameMap.getSize().getY() + 1;
@@ -97,10 +97,10 @@ void Controller::refresh()
 							Coordinates pos(getDeersArray()[j].get_x(), getDeersArray()[j].get_y());
 							TigersArray[i].move_to(pos);
 							getDeersArray()[j].kill();
-							DeersArray.erase(DeersArray.begin() + i);
+							DeersArray.erase(DeersArray.begin() + j);
 							TigersArray[i].set_hunger(TigersArray[i].get_hunger() + 20);
 							TigersArray[i].fierceness();
-							
+							break;
 						}
 					}
 				}
