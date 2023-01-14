@@ -90,13 +90,13 @@ void Controller::refresh()
 				if (TigersArray[i].is_prey_near(getDeersArray()))
 				{
 					TigersArray[i].fierceness();
-					for (int i = 0; i < getDeersArray().size(); i++)
+					for (int j = 0; j < getDeersArray().size(); j++)
 					{
-						if (TigersArray[i].Distance_between_objects(getDeersArray()[i].get_x(), getDeersArray()[i].get_y()) <= 100)
+						if (TigersArray[i].Distance_between_objects(getDeersArray()[j].get_x(), getDeersArray()[j].get_y()) <= 100)
 						{
-							Coordinates pos(getDeersArray()[i].get_x(), getDeersArray()[i].get_y());
+							Coordinates pos(getDeersArray()[j].get_x(), getDeersArray()[j].get_y());
 							TigersArray[i].move_to(pos);
-							getDeersArray()[i].kill();
+							getDeersArray()[j].kill();
 							DeersArray.erase(DeersArray.begin() + i);
 							TigersArray[i].set_hunger(TigersArray[i].get_hunger() + 20);
 							TigersArray[i].fierceness();
@@ -125,10 +125,10 @@ void Controller::refresh()
 
 void Controller::setStatistics()
 {
-	Population_interface* creator = new TigersPopulation();
+	StatisticCreator* creator = new TigerStatisticCreator();
 	TStatistic = creator->create();
 
 
-	creator = new DeersPopulation();
+	creator = new DeerStatisticCreator();
 	DStatistic = creator->create();
 }

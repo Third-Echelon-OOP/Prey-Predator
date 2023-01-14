@@ -6,10 +6,9 @@
 #include "Deer.h"
 #include "Map.h"
 #include "TIme_of_year.h"
-#include "Population_interface.h"
-#include "Statistic_interface.h"
-#include "TigersPopulation.h"
-#include "DeersPopulation.h"
+#include "StatisticCreator.h"
+#include "Statistic.h"
+
 
 #define SPEED = 1;
 
@@ -23,8 +22,8 @@ private:
 	vector<Tiger> TigersArray;
 	vector<Deer> DeersArray;
 	
-	Statistic_interface* TStatistic;
-	Statistic_interface* DStatistic;
+	Statistic* TStatistic;
+	Statistic* DStatistic;
 	TIme_of_year currTime;
 
 	void setMap(Map newMap);
