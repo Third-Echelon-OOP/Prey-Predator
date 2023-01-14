@@ -31,50 +31,29 @@ void Controller::setMap(Map newMap)
 
 void Controller::start() 
 {
-	int xTiger1 = rand() % gameMap.getSize().getX() + 1;
-	int yTiger1 = rand() % gameMap.getSize().getY() + 1;
-
-	int xDeer1 = rand() % gameMap.getSize().getX() + 1;
-	int yDeer1 = rand() % gameMap.getSize().getY() + 1;
-
-	while (xTiger1 == xDeer1 && yTiger1 == yDeer1)
+	int xTiger = 0, yTiger = 0, xDeer = 0, yDeer = 0;
+	for (int i = 0; i < 10; i++)
 	{
-		int xDeer1 = rand() % gameMap.getSize().getX() + 1;
-		int yDeer1 = rand() % gameMap.getSize().getY() + 1;
+		xTiger = rand() % gameMap.getSize().getX() + 1;
+		yTiger = rand() % gameMap.getSize().getY() + 1;
+		Tiger Tiger(xTiger, yTiger, 1);
+		TigersArray.push_back(Tiger);
 	}
-	Tiger firstTiger(xTiger1, yTiger1, 1);
-	Deer firstDeer(xDeer1, yDeer1, 1);
 
-	int xTiger2 = rand() % gameMap.getSize().getX() + 1;
-	int yTiger2 = rand() % gameMap.getSize().getY() + 1;
-
-	int xDeer2 = rand() % gameMap.getSize().getX() + 1;
-	int yDeer2 = rand() % gameMap.getSize().getY() + 1;
-
-	while (xTiger2 == xDeer2 && yTiger2 == yDeer2)
+	for (int i = 0; i < 20; i++)
 	{
-		int xDeer2 = rand() % gameMap.getSize().getX() + 1;
-		int yDeer2 = rand() % gameMap.getSize().getY() + 1;
+		xDeer = rand() % gameMap.getSize().getX() + 1;
+		yDeer = rand() % gameMap.getSize().getY() + 1;
+		Deer Deer(xDeer, yDeer, 1);
+		DeersArray.push_back(Deer);
+		gameMap.generateGrass(20);
 	}
-	Tiger secondTiger(xTiger2, yTiger2, 1);
-	Deer secondDeer(xDeer2, yDeer2, 1);
-
-	TigersArray.push_back(firstTiger);
-	DeersArray.push_back(firstDeer);
-	TigersArray.push_back(secondTiger);
-	DeersArray.push_back(secondDeer);
 
 	setStatistics();
 
 	TStatistic->getAmount().push_back(TigersArray.size());
 	DStatistic->getAmount().push_back(DeersArray.size());
 	currTime.next_day();
-
-	for (int i = 0; i < 20; i++)
-	{
-		gameMap.generateGrass(20);
-	}
-
 }
 
 void Controller::refresh() 
@@ -106,8 +85,7 @@ void Controller::refresh()
 		if (TigersArray[i].get_alive() == true)
 		{
 			TigersArray[i].hunger_reduction();
-			while (TigersArray[i].get_hunger() <= 60) // Коли жетва далеко від тигра він рандомно зміщується поки не знайде Оленя
-														// Це займає багато часу і програма висне
+			while (TigersArray[i].get_hunger() <= 60)
 			{
 				if (TigersArray[i].is_prey_near(getDeersArray()))
 				{

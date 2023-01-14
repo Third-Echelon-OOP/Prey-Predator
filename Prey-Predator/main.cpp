@@ -48,7 +48,7 @@ int main() {
 					{
 					case 0:
 					{
-						cout << "Press '1' to continue simulation" << endl << "Press '2' to exit simulation!!!!!!" << endl;
+						cout << "Press '1' to continue simulation" << endl << "Press '2' to exit simulation" << endl;
 						cin >> command;
 						if (command == 1)continue;
 						else if (command == 2)break;
@@ -58,6 +58,9 @@ int main() {
 						continue;
 					}
 					default:
+						cout << "No such command. Try one more time" << endl;
+						cin.clear();
+						cin.sync();
 						break;
 					}
 				}
