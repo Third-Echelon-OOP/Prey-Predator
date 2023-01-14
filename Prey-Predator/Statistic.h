@@ -3,7 +3,7 @@
 
 using namespace std;
 
-class Statistic_interface {
+class Statistic {
 
 public:
 	virtual void printLastDayStatistic() = 0;

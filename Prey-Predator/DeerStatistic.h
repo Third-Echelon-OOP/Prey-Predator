@@ -1,10 +1,10 @@
 #pragma once
-#include "Statistic_interface.h"
+#include "Statistic.h"
 #include <vector>
 
 using namespace std;
 
-class DeerStatistic : public Statistic_interface
+class DeerStatistic : public Statistic
 {
 	vector<int> deersAmount;
 public:
