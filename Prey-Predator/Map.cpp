@@ -30,7 +30,7 @@ int Map::getObjectNum() {
 MapObject& Map::getObjectI(int i) {
     if (i >= object.size())
     {
-        return;
+        return object.front();
     }
     return object[i];
 }
