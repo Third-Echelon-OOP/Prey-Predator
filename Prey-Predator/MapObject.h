@@ -6,26 +6,27 @@
 #define PREY_PREDATOR_MAPOBJECT_H
 
 #include "Coordinates.h"
+#include "Polygon.h"
 #include <vector>
 
-#define TYPE_DEFAULT -1;
+#define TYPE_DEFAULT -1
 #define TYPE_GRASS 1
 
 class MapObject {
 private:
     int objectType;
     int objectID;
-    int objectRad;
-    Coordinates objectCenter;
-    std::vector <Coordinates> pointArr;
+    //int objectRad;
+    //Coordinates objectCenter;
+    //std::vector <Coordinates> pointArr;
+    PolygonWithCenter polygon;
 
-    void pointsGenerator(int numOfPoints, Coordinates mapSize);
 public:
     MapObject();
-    MapObject(int detalisation, Coordinates mapSize);
+    MapObject(int detalisation, Coordinates &maxSize, std::vector<MapObject> &otherObj);
 
     void setType(int objectType);
-    void setObjectRadius(int objectRad);
+    void setObjectRadius(int objectRadius);
     void setObjectCenter(Coordinates objectCenter);
     void addPointToArray(Coordinates newPoint);
 
@@ -36,8 +37,7 @@ public:
     int getObjRad();
     long getID();
 
-    bool checkFood();
-    void changeFood(int change);
+    virtual void pointsGenerator(int numOfPoints, Coordinates &maxSize, std::vector<MapObject> &otherObj);
 
     void setID(long objectID);
     long generateID();

@@ -18,24 +18,12 @@ long MapObject::generateID() {
 MapObject::MapObject() {
     objectType = -1;
     objectID = 0;
-    objectRad = 0;
-    pointArr.clear();
+    polygon = PolygonWithCenter();
 }
 
-MapObject::MapObject(int detalisation, Coordinates mapSize) {
+MapObject::MapObject(int detalisation, Coordinates &maxSize, std::vector<MapObject> &otherObj) {
     objectType = TYPE_DEFAULT;
     objectID = generateID();
-    objectRad = 0;
-    pointArr.clear();
-    pointsGenerator(detalisation, mapSize);
-}
-
-void MapObject::pointsGenerator(int numOfPoints, Coordinates mapSize) {
-    int indent = 5;
-    objectCenter = Coordinates(indent + rand() % (mapSize.getX() - indent),
-                        indent + rand() % (mapSize.getY() - indent));
-
-    //rand polygon generation
 }
 
 void MapObject::setID(long objectID) {
@@ -46,28 +34,28 @@ void MapObject::setType(int objectType) {
     this->objectType = objectType;
 }
 
-void MapObject::setObjectRadius(int objectRad) {
-    this->objectRad = objectRad;
+void MapObject::setObjectRadius(int objectRadius) {
+    polygon.setPolygonRadius(objectRadius);
 }
 
 void MapObject::setObjectCenter(Coordinates objectCenter) {
-    this->objectCenter = objectCenter;
+    polygon.setPolygonCenter(objectCenter);
 }
 
 int MapObject::getPointsNum() {
-    return pointArr.size();
+    return polygon.getPointArray().size();
 }
 
 std::vector <Coordinates> &MapObject::getPointsArr() {
-    return pointArr;
+    return polygon.getPointArray();
 }
 
 void MapObject::addPointToArray(Coordinates newPoint) {
-    pointArr.push_back(newPoint);
+    polygon.addPoint(newPoint);
 }
 
 Coordinates MapObject::getObjCenter() {
-    return objectCenter;
+    return polygon.getPolygonCenter();
 }
 
 int MapObject::getObjType() {
@@ -75,17 +63,9 @@ int MapObject::getObjType() {
 }
 
 int MapObject::getObjRad() {
-    return objectRad;
+    return polygon.getPolygonRadius();
 }
 
 long MapObject::getID() {
     return objectID;
-}
-
-bool MapObject::checkFood() {
-    return false;
-}
-
-void MapObject::changeFood(int change) {
-    return;
 }

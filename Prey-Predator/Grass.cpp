@@ -3,19 +3,19 @@
 
 Grass::Grass() : MapObject()
 {
-    foodAmount = BASIC_GRASS_FOOD;
+    Food(BASIC_GRASS_FOOD);
     setType(TYPE_GRASS);
 }
 
-Grass::Grass(Coordinates &maxSize, std::vector<MapObject> &otherObj, int foodAmount) {
-    this->foodAmount = foodAmount;
+Grass::Grass(int detalisation, Coordinates &maxSize, std::vector<MapObject> &otherObj, int foodAmount) {
+    Food(foodAmount);
     setType(TYPE_GRASS);
     setObjectRadius(1);
     setID(generateID());
-    pointsGenerator(maxSize, otherObj);
+    pointsGenerator(1, maxSize, otherObj);
 }
 
-void Grass::pointsGenerator(Coordinates &maxSize, std::vector<MapObject> &otherObj) {
+void Grass::pointsGenerator(int numOfPoints, Coordinates &maxSize, std::vector<MapObject> &otherObj) {
    Coordinates objectCenter;
    float distance;
    bool flag = true;
@@ -37,22 +37,3 @@ void Grass::pointsGenerator(Coordinates &maxSize, std::vector<MapObject> &otherO
    setObjectCenter(objectCenter);
    addPointToArray(objectCenter);
 }
-
-bool Grass::checkFood() {
-    if (foodAmount == 0)
-    {
-        return false;
-    }
-    return true;
-}
-
-void Grass::changeFood(int change) {
-    if (foodAmount + change < 0){
-        foodAmount = 0;
-    }
-    else {
-        foodAmount += change;
-    }
-}
-
-

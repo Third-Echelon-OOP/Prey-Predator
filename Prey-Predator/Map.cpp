@@ -40,12 +40,8 @@ std::vector<MapObject> &Map::getObjectArr() {
 }
 
 
-void Map::generateObject1() {
-    object.push_back(MapObject(4, getSize()));
-}
-
 void Map::generateGrass(int food) {
-    object.push_back(Grass(size, object, food));
+    object.push_back(Grass(1, size, object, food));
 }
 
 MapObject& Map::findObject(long id) {
@@ -56,14 +52,6 @@ MapObject& Map::findObject(long id) {
             return object[i];
         }
         
-    }
-}
-
-void Map::changeObjectFood(long id, int change) {
-    MapObject target = findObject(id);
-    if (target.getObjType() == TYPE_GRASS)
-    {
-        target.changeFood(change);
     }
 }
 

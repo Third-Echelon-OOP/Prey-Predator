@@ -2,22 +2,19 @@
 #define PREY_PREDATOR_GRASS_H
 
 #include "MapObject.h"
+#include "Food.h"
 #include <vector>
 
 #define BASIC_GRASS_FOOD 5
 
-class Grass: public MapObject
+class Grass: public MapObject, public Food
 {
-private:
-    int foodAmount;
-
-    void pointsGenerator(Coordinates &maxSize, std::vector<MapObject> &otherObj);
 public:
     Grass();
-    Grass(Coordinates &maxSize, std::vector<MapObject> &otherObj, int foodAmount = BASIC_GRASS_FOOD);
+    Grass(int detalisation, Coordinates &maxSize, std::vector<MapObject> &otherObj, int foodAmount);
    
-    bool checkFood();
-    void changeFood(int change);
+    void pointsGenerator(int numOfPoints, Coordinates &maxSize, std::vector<MapObject> &otherObj) override;
+
     //~Grass();
 };
 
